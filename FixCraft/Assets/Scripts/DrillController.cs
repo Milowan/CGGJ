@@ -39,7 +39,8 @@ public class DrillController : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision == gameObject.CompareTag("Dirt") || collision == gameObject.CompareTag("Clay") || collision == gameObject.CompareTag("Stone") || collision == gameObject.CompareTag("Steel"))
+        //if ((collision == gameObject.CompareTag("Dirt")) || (collision == gameObject.CompareTag("Clay")) || (collision == gameObject.CompareTag("Stone")) || (collision == gameObject.CompareTag("Steel")))
+        if (collision.GetComponent<Block>())
         {
             block = collision.gameObject.GetComponent<Block>();
             block.TakeDamage(strength);

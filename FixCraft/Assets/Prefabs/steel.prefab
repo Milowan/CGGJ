@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 60267166802546820}
   m_Layer: 0
   m_Name: steel
-  m_TagString: Untagged
+  m_TagString: Steel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097bb359ee647954ba057c7bf806416b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
 --- !u!60 &60267166802546820
 PolygonCollider2D:
   m_ObjectHideFlags: 0
