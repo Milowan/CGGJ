@@ -22,7 +22,7 @@ public class Block : MonoBehaviour
 
     private void Die()
     {
-        enabled = false;
+        gameObject.SetActive(false;
         mined = true;
     }
 
@@ -39,6 +39,7 @@ public class Block : MonoBehaviour
 
     protected void GameStart()
     {
+        gameObject.SetActive(true);
         mined = false;
     }
 

@@ -11,5 +11,6 @@ public class Stone : Block
         enabled = false;
         material = Material.STONE;
         health = 200.0f;
+        GameEventManager.GameStart += GameStart;
     }
 }

@@ -11,5 +11,6 @@ public class Steel : Block
         enabled = false;
         material = Material.STEEL;
         health = 250.0f;
+        GameEventManager.GameStart += GameStart;
     }
 }

@@ -11,5 +11,6 @@ public class Clay : Block
         enabled = false;
         material = Material.CLAY;
         health = 150.0f;
+        GameEventManager.GameStart += GameStart;
     }
 }
