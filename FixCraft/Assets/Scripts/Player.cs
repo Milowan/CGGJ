@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         drill = GetComponentInChildren<DrillController>();
+        anim = GetComponentInChildren<Animation>();
 
     }
 
@@ -42,28 +43,37 @@ public class Player : MonoBehaviour
             Debug.Log(hit.point);
         }
 
+        CheckInputs();
+
         bool found = false;
         for (int i = 0; i < mCurrentStates.Count - 1; i++)
         {
-            if (mCurrentStates[i] == PlayerState.MOVING)
+            if (mCurrentStates[i] == PlayerState.DRILLING)
             {
                 found = true;
             }
         }
         if (found == true)
         {
+            Debug.Log("ButtonDOWN");
             drill.MineBlock();
-            anim.Play("TESTDRILL");
+            //anim.Play("TESTDRILL");
+            found = false;
+        }
+        else if (found == false)
+        {
+            Debug.Log("ButtonUP");
+            //anim.Stop("TESTDRILL");
+
         }
 
-
-        CheckInputs();
     }
 
     void CheckInputs()
     {
-        if (Input.GetMouseButtonDown(0)) // returns true while left mouse is down
+        if (Input.GetMouseButton(0)) // returns true while left mouse is down
         {
+
             bool found = false;
             for (int i = 0; i < mCurrentStates.Count - 1; i++)
             {
@@ -77,7 +87,7 @@ public class Player : MonoBehaviour
                 mCurrentStates.Add(PlayerState.DRILLING);
             }
         }
-        else if (Input.GetMouseButtonUp(0))
+        else if (!Input.GetMouseButton(0))
         {
             for (int i = 0; i < mCurrentStates.Count - 1; i++)
             {
@@ -88,7 +98,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
             bool found = false;
             for (int i = 0; i < mCurrentStates.Count - 1; i++)
