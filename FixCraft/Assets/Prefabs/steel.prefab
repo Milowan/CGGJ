@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 60267166802546820}
   m_Layer: 0
   m_Name: steel
-  m_TagString: Untagged
+  m_TagString: Steel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

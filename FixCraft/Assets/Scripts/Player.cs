@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
     private DrillController drill;
-    public int speed = 4;
-    private static int gems = 300;
+    public float speed = 4;
+    private static int gems = 0;
     public Animation anim;
     public int GetGems()
     {
