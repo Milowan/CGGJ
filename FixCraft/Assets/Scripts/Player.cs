@@ -139,5 +139,15 @@ public class Player : MonoBehaviour
     {
         components.Add(shipComponent);
     }
+
+    public void AttachComponentsToShip(Ship ship)
+    {
+        foreach(ShipComponent component in components)
+        {
+            ship.AttachComponent(component);
+        }
+
+        components.Clear();
+    }
 }
 
