@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 public class BlockGenesis : MonoBehaviour
 {
     [Range(30,100)]
     [SerializeField] private int blockFieldSize = 40;
     [SerializeField] public List<GameObject> spawnedTiles;
-    [SerializeField] GameObject[] blocks, groundBlocks;
+    [SerializeField] GameObject[] blocks;
+    [Space(15)]
+    [SerializeField] GameObject charSpawnObject;
+    [SerializeField] Grid sandGrid;
      
     void Start()
     {
@@ -16,8 +22,7 @@ public class BlockGenesis : MonoBehaviour
 
         float   _step = (blocks[0].GetComponent<SpriteRenderer>()) ? blocks[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x : 0.32f, 
                 step = _step;
-
-
+        
         int spaceCount = 0;
         int startBlock = ((blockFieldSize * blockFieldSize) / 3)  ;
         int endBlock = (blockFieldSize * blockFieldSize) - startBlock;
@@ -26,11 +31,44 @@ public class BlockGenesis : MonoBehaviour
 
         for (int i = 0; i < blockFieldSize * blockFieldSize; i++)
         {
+
+            System.Func<GameObject> lambdaObject = () => {
+                float wid = (blockFieldSize * _step);
+                //bedrock outline
+                if (_curWidth < wid * 0.03f || _curHeight < wid * 0.03f || _curWidth > wid * 0.97f || _curHeight > wid * 0.97f)
+                {
+                    return blocks[0];
+                }
+                //steel
+                else if (_curWidth < wid * 0.1f || _curHeight < wid * 0.1f || _curWidth > wid * 0.9f || _curHeight > wid * 0.9f)
+                {
+                    return blocks[1];
+                }
+                //stone
+                else if (_curWidth < wid * 0.2f || _curHeight < wid * 0.2f || _curWidth > wid * 0.8f || _curHeight > wid * 0.8f)
+                {
+                    return blocks[2];
+                }
+                //clay
+                else if (_curWidth < wid * 0.28f || _curHeight < wid * 0.28f || _curWidth > wid * 0.72f || _curHeight > wid * 0.72f)
+                {
+                    return blocks[3];
+                }
+                //dirt
+                else if (_curWidth < wid * 0.36f || _curHeight < wid * 0.36f || _curWidth > wid * 0.64f || _curHeight > wid * 0.64f)
+                {
+                    return blocks[4];
+                }
+                return null;
+            };
+
+            GameObject curBlock = null;
             //Here we can use a pool instead of a straight up instantiate (rough on performance)
-            GameObject curBlock = GameObject.Instantiate(blocks[Random.Range(0, blocks.Length)]);
-           // GameObject undrBlock = GameObject.Instantiate(groundBlocks[Random.Range(0, groundBlocks.Length)]);
-            curBlock.transform.position = new Vector2(_curWidth, _curHeight);
-            //undrBlock.transform.position = new Vector2(_curWidth, _curHeight);
+            if (lambdaObject())
+            {
+                curBlock = Instantiate(lambdaObject());
+                curBlock.transform.position = new Vector2(_curWidth, _curHeight);
+            }
 
             _curWidth += step;
 
@@ -58,15 +96,25 @@ public class BlockGenesis : MonoBehaviour
                 }
             }
             //Spawn-Space 
-            if (i >= startBlock && i < endBlock && _curWidth >= ( blockFieldSize * _step ) * 0.33f  && _curWidth < (blockFieldSize * _step) * 0.66f && spaceCount <= (20 * 20) && !spaceTrigger)
+            if (i >= startBlock && 
+                i < endBlock && 
+                _curWidth >= ( blockFieldSize * _step ) * 0.4f  && 
+                _curWidth < (blockFieldSize * _step) * 0.6f && 
+                spaceCount <= (20 * 20) && 
+                !spaceTrigger)
             {
                 //Testing only
-                //Debug.Log("fired");
                 Destroy(curBlock);
                 spaceCount++;
             }
 
-            
+            //Character Spawn Point
+            if (spaceCount == 200)
+            {
+                var temp = Instantiate(charSpawnObject, new Vector2(_curWidth, _curHeight), Quaternion.identity);
+                sandGrid.transform.position = new Vector2(_curWidth, _curHeight);
+            };
+
         }
     }
 }
