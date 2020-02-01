@@ -8,7 +8,7 @@ public class Bedrock : Block
     void Start()
     {
         mineable = false;
-        gameObject.SetActive(false);
+        enabled = false;
         material = Material.BEDROCK;
         health = 1.0f;
     }

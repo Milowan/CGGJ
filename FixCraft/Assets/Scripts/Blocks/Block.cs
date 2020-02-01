@@ -23,19 +23,19 @@ public class Block : MonoBehaviour
 
     private void Die()
     {
-        gameObject.SetActive(false);
+        enabled = false;
         mined = true;
     }
 
     private void OnBecameInvisible()
     {
-        gameObject.SetActive(false);
+        enabled = false;
     }
 
     private void OnBecameVisible()
     {
         if (!mined)
-            gameObject.SetActive(true);
+            enabled = true;
     }
 
     protected void GameStart()

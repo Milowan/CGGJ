@@ -8,7 +8,7 @@ public class Stone : Block
     void Start()
     {
         mineable = true;
-        gameObject.SetActive(false);
+        enabled = false;
         material = Material.STONE;
         health = 200.0f;
     }
