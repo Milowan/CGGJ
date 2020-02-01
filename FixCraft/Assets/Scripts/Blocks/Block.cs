@@ -7,6 +7,7 @@ public class Block : MonoBehaviour
 
     protected bool mineable;
     private bool mined;
+    [SerializeField]
     protected float health;
     protected Material material;
 
