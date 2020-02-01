@@ -14,39 +14,59 @@ public class BlockGenesis : MonoBehaviour
         float   _curWidth = 0, 
                 _curHeight = 0;
 
-        float step = (blocks[0].GetComponent<SpriteRenderer>()) ? blocks[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x : 0.32f;
+        float   _step = (blocks[0].GetComponent<SpriteRenderer>()) ? blocks[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x : 0.32f, 
+                step = _step;
+
 
         int spaceCount = 0;
-        int startBlock = (blockFieldSize * blockFieldSize) / 4 ;
+        int startBlock = ((blockFieldSize * blockFieldSize) / 3)  ;
         int endBlock = (blockFieldSize * blockFieldSize) - startBlock;
+        bool spaceTrigger = false;
+        float trigReset = 0;
+
         for (int i = 0; i < blockFieldSize * blockFieldSize; i++)
         {
-            
             //Here we can use a pool instead of a straight up instantiate (rough on performance)
             GameObject curBlock = GameObject.Instantiate(blocks[Random.Range(0, blocks.Length)]);
-            GameObject undrBlock = GameObject.Instantiate(groundBlocks[Random.Range(0, groundBlocks.Length)]);
+           // GameObject undrBlock = GameObject.Instantiate(groundBlocks[Random.Range(0, groundBlocks.Length)]);
             curBlock.transform.position = new Vector2(_curWidth, _curHeight);
-            undrBlock.transform.position = new Vector2(_curWidth, _curHeight);
+            //undrBlock.transform.position = new Vector2(_curWidth, _curHeight);
 
             _curWidth += step;
+
             if (i != 1 && i % blockFieldSize == blockFieldSize-1 )
             {
                 _curWidth = 0;
                 _curHeight+= step;
             }
+
             spawnedTiles.Add(curBlock);
+
             if (spaceCount != 0 && spaceCount % 20 == 0)
             {
+                spaceTrigger = true;
+                trigReset = _curHeight;
                 spaceCount++;
-                continue;
+            }
+
+            if (spaceTrigger)
+            {
+                if (_curHeight != trigReset)
+                {
+                    spaceTrigger = false;
+                    trigReset = 0;
+                }
             }
             //Spawn-Space 
-            if (i > startBlock && i < endBlock && _curWidth > (blockFieldSize * 0.32f * 0.25f) && _curWidth < (blockFieldSize * 0.32f * 0.75f) && spaceCount <= (20 * 20))
+            if (i >= startBlock && i < endBlock && _curWidth >= ( blockFieldSize * _step ) * 0.33f  && _curWidth < (blockFieldSize * _step) * 0.66f && spaceCount <= (20 * 20) && !spaceTrigger)
             {
                 //Testing only
-                curBlock.GetComponent<SpriteRenderer>().sprite = null;
+                //Debug.Log("fired");
+                Destroy(curBlock);
                 spaceCount++;
             }
+
+            
         }
     }
 }
