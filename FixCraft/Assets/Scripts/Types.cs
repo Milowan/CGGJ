@@ -3,7 +3,8 @@
     DIRT,
     CLAY,
     STONE,
-    STEEL
+    STEEL,
+    BEDROCK
 }
 
 public enum PlayerState
