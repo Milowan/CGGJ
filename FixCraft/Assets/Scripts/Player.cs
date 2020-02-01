@@ -55,16 +55,13 @@ public class Player : MonoBehaviour
         }
         if (found == true)
         {
-            Debug.Log("ButtonDOWN");
-            drill.MineBlock();
-            //anim.Play("TESTDRILL");
+            drill.Mine(); 
             found = false;
         }
         else if (found == false)
         {
-            Debug.Log("ButtonUP");
-            //anim.Stop("TESTDRILL");
 
+            drill.StopMine();
         }
 
     }

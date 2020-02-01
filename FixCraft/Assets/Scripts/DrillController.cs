@@ -26,12 +26,16 @@ public class DrillController : MonoBehaviour
         }
     }
 
-    public void MineBlock()
+    public void Mine()
     {
-        collider.enabled = !collider.enabled;
-        collider.isTrigger = true;
+        if(!collider.enabled)
+        collider.enabled = true;
     }
-
+    public void StopMine()
+    {
+        if(collider.enabled)
+        collider.enabled = false;
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision == gameObject.CompareTag("Clay"));
