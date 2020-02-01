@@ -157,6 +157,18 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown("Interact"))
+        {
+            RaycastHit2D hit;
+            if (hit = Physics2D.Raycast(transform.position, transform.forward, 1.0f))
+            {
+                if (hit.collider.GetComponent<Ship>())
+                {
+                    AttachComponentsToShip(hit.collider.GetComponent<Ship>());
+                }
+            }
+        }
     }
 
     List<PlayerState> GetPlayerStates()
