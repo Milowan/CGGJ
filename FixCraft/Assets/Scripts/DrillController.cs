@@ -5,7 +5,8 @@ using UnityEngine;
 public class DrillController : MonoBehaviour
 {
     private float speed;
-    public float power;
+    private float power = 10;
+    private float strength = 10;
     BoxCollider2D collider;
     Block block;
     private void Awake()
@@ -38,10 +39,10 @@ public class DrillController : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision == gameObject.CompareTag("Clay"));
+        if (collision == gameObject.CompareTag("Dirt") || collision == gameObject.CompareTag("Clay") || collision == gameObject.CompareTag("Stone") || collision == gameObject.CompareTag("Steel"))
         {
             block = collision.gameObject.GetComponent<Block>();
-            block.TakeDamage(power);
+            block.TakeDamage(strength);
         }
     }
 }
