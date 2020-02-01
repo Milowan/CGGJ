@@ -214,13 +214,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bf4407c7183ef45bdea23db26e168b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockFieldSize: 50
+  blockFieldSize: 40
   spawnedTiles: []
   blocks:
   - {fileID: 1008503205836797975, guid: 697afd1e29f66f84badecd76c553c785, type: 3}
   - {fileID: 1008503205836797975, guid: 741a3c3d45173f34db77b22eec1057ae, type: 3}
   - {fileID: 1008503205836797975, guid: 8dc49380183725e47aada17e749dd6d8, type: 3}
   - {fileID: 1008503205836797975, guid: 56e926df912020e44a288872fc03ddac, type: 3}
+  groundBlocks:
+  - {fileID: 1008503205836797975, guid: 1f3f8c213a181ae47a367cb5ac65aa7e, type: 3}
+  - {fileID: 1008503205836797975, guid: 94454aa77525993438a38602b59c7ba4, type: 3}
+  - {fileID: 1008503205836797975, guid: 3e7750f5854fcc84684c52ff29bf3d07, type: 3}
+  - {fileID: 1008503205836797975, guid: 7d3e5040304c32340bbfb696f253a6a2, type: 3}
 --- !u!4 &1219821164
 Transform:
   m_ObjectHideFlags: 0
