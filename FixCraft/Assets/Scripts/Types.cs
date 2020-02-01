@@ -5,3 +5,10 @@
     STONE,
     STEEL
 }
+
+public enum PlayerState
+{
+    DRILLING,
+    MOVING,
+    IDLE
+}
