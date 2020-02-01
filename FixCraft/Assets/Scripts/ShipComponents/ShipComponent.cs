@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShipComponent : MonoBehaviour
 {
 
-
+    protected ShipComponentType type;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,6 +20,12 @@ public class ShipComponent : MonoBehaviour
     public void PlaceComponent(Vector2 position)
     {
         transform.position = position;
+        gameObject.SetActive(true);
+    }
+
+    public ShipComponentType GetShipComponentType()
+    {
+        return type;
     }
 
 }
