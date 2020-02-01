@@ -165,34 +165,35 @@ public class Player : MonoBehaviour
 
     void UpdateAnimations()
     {
-        bool found = false;
+        bool found1 = false;
         for (int i = 0; i < mCurrentStates.Count; i++)
         {
             if (mCurrentStates[i] == PlayerState.MOVING)
             {
-                found = true;
+                found1 = true;
             }
         }
-        if (found == true)
+        if (found1 == true)
         {
             playerAnimator.SetBool("bMoving", true);
         }
-        else if (found == false)
+        else if (found1 == false)
         {
             playerAnimator.SetBool("bMoving", false);
         }
+        bool found2 = false;
         for (int i = 0; i < mCurrentStates.Count; i++)
         {
             if (mCurrentStates[i] == PlayerState.DRILLING)
             {
-                found = true;
+                found2 = true;
             }
         }
-        if (found == true)
+        if (found2 == true)
         {
             drillAnimator.SetBool("bDrilling", true);
         }
-        else if (found == false)
+        else if (found2 == false)
         {
             drillAnimator.SetBool("bDrilling", false);
         }
