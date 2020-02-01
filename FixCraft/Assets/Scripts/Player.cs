@@ -38,13 +38,61 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) // returns true while left mouse is down
         {
-            mCurrentStates.Add(PlayerState.DRILLING);
+            bool found = false;
+            for (int i = 0; i < mCurrentStates.Count - 1; i++)
+            {
+                if (mCurrentStates[i] == PlayerState.DRILLING)
+                {
+                    found = true;
+                }
+            }
+            if (found == false)
+            {
+                mCurrentStates.Add(PlayerState.DRILLING);
+            }
         }
-        else
+        else if (Input.GetMouseButtonUp(0))
         {
             for (int i = 0; i < mCurrentStates.Count - 1; i++)
             {
                 if (mCurrentStates[i] == PlayerState.DRILLING)
+                {
+                    mCurrentStates.RemoveAt(i);
+                }
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        {
+            bool found = false;
+            for (int i = 0; i < mCurrentStates.Count - 1; i++)
+            {
+                if (mCurrentStates[i] == PlayerState.MOVING)
+                {
+                    found = true;
+                }
+            }
+            if (found == false)
+            {
+                mCurrentStates.Add(PlayerState.MOVING);
+            }
+        }
+        else
+        {
+            bool found = false;
+            for (int i = 0; i < mCurrentStates.Count - 1; i++)
+            {
+                if (mCurrentStates[i] == PlayerState.IDLE)
+                {
+                    found = true;
+                }
+            }
+            if (found == false)
+            {
+                mCurrentStates.Add(PlayerState.IDLE);
+            }
+            for (int i = 0; i < mCurrentStates.Count - 1; i++)
+            {
+                if (mCurrentStates[i] != PlayerState.IDLE)
                 {
                     mCurrentStates.RemoveAt(i);
                 }
