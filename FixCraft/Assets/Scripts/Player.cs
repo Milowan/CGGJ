@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public float speed = 4;
     private static int gems = 0;
     public Animation anim;
-    private List<ShipComponent> components;
+    private List<ShipComponent> components = new List<ShipComponent>();
     [SerializeField]
     private List<PlayerState> mCurrentStates = new List<PlayerState>();
 

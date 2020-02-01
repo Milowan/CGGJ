@@ -8,11 +8,15 @@ public class UIController : MonoBehaviour
     public Text gemAmount;
     int gems;
 
+    public List<ShipComponent> shipsSprites = new List<ShipComponent>();
+
     private void Awake()
     {
         player = FindObjectOfType<Player>();
         gems = player.GetGems();
         gemAmount.text = "" + gems;
-
+    }
+    private void Update()
+    {
     }
 }
