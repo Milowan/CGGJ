@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 439090346234860056}
   - component: {fileID: 4852243874783549257}
   - component: {fileID: 3536782911787567225}
+  - component: {fileID: 61174575021293516}
   m_Layer: 0
   m_Name: Wing
   m_TagString: Untagged
@@ -92,3 +93,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6022f0051683f54595a8e3386f554d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &61174575021293516
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5002697376152582610}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.32}
+  m_EdgeRadius: 0
