@@ -6,10 +6,14 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
     private DrillController drill;
+    private Animator playerAnimator;
+    private Animator drillAnimator;
     public float speed = 4;
     private static int gems = 0;
     public Animation anim;
     private List<ShipComponent> components;
+    [SerializeField]
+    private List<PlayerState> mCurrentStates = new List<PlayerState>();
 
     public int GetGems()
     {
@@ -21,7 +25,6 @@ public class Player : MonoBehaviour
         gems = value;
     }
 
-    private List<PlayerState> mCurrentStates = new List<PlayerState>();
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +32,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         drill = GetComponentInChildren<DrillController>();
         anim = GetComponentInChildren<Animation>();
-
+        playerAnimator = GetComponent<Animator>();
+        drillAnimator = drill.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -40,9 +44,10 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
 
         CheckInputs();
+        UpdateAnimations();
 
         bool found = false;
-        for (int i = 0; i < mCurrentStates.Count - 1; i++)
+        for (int i = 0; i < mCurrentStates.Count; i++)
         {
             if (mCurrentStates[i] == PlayerState.DRILLING)
             {
@@ -56,7 +61,6 @@ public class Player : MonoBehaviour
         }
         else if (found == false)
         {
-
             drill.StopMine();
         }
 
@@ -66,13 +70,16 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButton(0)) // returns true while left mouse is down
         {
-
             bool found = false;
-            for (int i = 0; i < mCurrentStates.Count - 1; i++)
+            for (int i = 0; i < mCurrentStates.Count; i++)
             {
                 if (mCurrentStates[i] == PlayerState.DRILLING)
                 {
                     found = true;
+                }
+                if (mCurrentStates[i] == PlayerState.IDLE)
+                {
+                    mCurrentStates.RemoveAt(i);
                 }
             }
             if (found == false)
@@ -80,9 +87,10 @@ public class Player : MonoBehaviour
                 mCurrentStates.Add(PlayerState.DRILLING);
             }
         }
-        else if (!Input.GetMouseButton(0))
+        //if (!Input.GetMouseButton(0))
+        else
         {
-            for (int i = 0; i < mCurrentStates.Count - 1; i++)
+            for (int i = 0; i < mCurrentStates.Count; i++)
             {
                 if (mCurrentStates[i] == PlayerState.DRILLING)
                 {
@@ -91,14 +99,18 @@ public class Player : MonoBehaviour
             }
         }
 
-        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
             bool found = false;
-            for (int i = 0; i < mCurrentStates.Count - 1; i++)
+            for (int i = 0; i < mCurrentStates.Count; i++)
             {
                 if (mCurrentStates[i] == PlayerState.MOVING)
                 {
                     found = true;
+                }
+                if (mCurrentStates[i] == PlayerState.IDLE)
+                {
+                    mCurrentStates.RemoveAt(i);
                 }
             }
             if (found == false)
@@ -108,8 +120,19 @@ public class Player : MonoBehaviour
         }
         else
         {
+            for (int i = 0; i < mCurrentStates.Count; i++)
+            {
+                if (mCurrentStates[i] == PlayerState.MOVING)
+                {
+                    mCurrentStates.RemoveAt(i);
+                }
+            }
+        }
+
+        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D) && !Input.GetMouseButton(0))
+        {
             bool found = false;
-            for (int i = 0; i < mCurrentStates.Count - 1; i++)
+            for (int i = 0; i < mCurrentStates.Count; i++)
             {
                 if (mCurrentStates[i] == PlayerState.IDLE)
                 {
@@ -120,7 +143,7 @@ public class Player : MonoBehaviour
             {
                 mCurrentStates.Add(PlayerState.IDLE);
             }
-            for (int i = 0; i < mCurrentStates.Count - 1; i++)
+            for (int i = 0; i < mCurrentStates.Count; i++)
             {
                 if (mCurrentStates[i] != PlayerState.IDLE)
                 {
@@ -138,6 +161,41 @@ public class Player : MonoBehaviour
     public void CollectComponent(ShipComponent shipComponent)
     {
         components.Add(shipComponent);
+    }
+
+    void UpdateAnimations()
+    {
+        bool found = false;
+        for (int i = 0; i < mCurrentStates.Count; i++)
+        {
+            if (mCurrentStates[i] == PlayerState.MOVING)
+            {
+                found = true;
+            }
+        }
+        if (found == true)
+        {
+            playerAnimator.SetBool("bMoving", true);
+        }
+        else if (found == false)
+        {
+            playerAnimator.SetBool("bMoving", false);
+        }
+        for (int i = 0; i < mCurrentStates.Count; i++)
+        {
+            if (mCurrentStates[i] == PlayerState.DRILLING)
+            {
+                found = true;
+            }
+        }
+        if (found == true)
+        {
+            drillAnimator.SetBool("bDrilling", true);
+        }
+        else if (found == false)
+        {
+            drillAnimator.SetBool("bDrilling", false);
+        }
     }
 }
 

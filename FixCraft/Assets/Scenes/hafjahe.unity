@@ -184,6 +184,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7328359884881238182, guid: 6cfc60398f2c84748ae17455e711535e,
+        type: 3}
+      propertyPath: m_Name
+      value: Drill
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cfc60398f2c84748ae17455e711535e, type: 3}
 --- !u!1 &18908149 stripped
@@ -213,9 +218,9 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -224,7 +229,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.12814981, y: 0.1357896}
   m_EdgeRadius: 0
---- !u!1 &1218380891
+--- !u!1 &155799520
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,46 +237,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1218380893}
-  - component: {fileID: 1218380892}
+  - component: {fileID: 155799522}
+  - component: {fileID: 155799521}
   m_Layer: 0
-  m_Name: Tester
+  m_Name: Tester (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1218380892
+--- !u!114 &155799521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218380891}
+  m_GameObject: {fileID: 155799520}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1bf4407c7183ef45bdea23db26e168b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockFieldSize: 40
+  blockFieldSize: 100
   spawnedTiles: []
   blocks:
-  - {fileID: 1008503205836797975, guid: 697afd1e29f66f84badecd76c553c785, type: 3}
-  - {fileID: 1008503205836797975, guid: 741a3c3d45173f34db77b22eec1057ae, type: 3}
-  - {fileID: 1008503205836797975, guid: 8dc49380183725e47aada17e749dd6d8, type: 3}
+  - {fileID: 1008503205836797975, guid: d98da5f15fc7a704fa35abfc221b8ae6, type: 3}
   - {fileID: 1008503205836797975, guid: 56e926df912020e44a288872fc03ddac, type: 3}
-  groundBlocks:
-  - {fileID: 1008503205836797975, guid: 1f3f8c213a181ae47a367cb5ac65aa7e, type: 3}
-  - {fileID: 1008503205836797975, guid: 94454aa77525993438a38602b59c7ba4, type: 3}
-  - {fileID: 1008503205836797975, guid: 3e7750f5854fcc84684c52ff29bf3d07, type: 3}
-  - {fileID: 1008503205836797975, guid: 7d3e5040304c32340bbfb696f253a6a2, type: 3}
---- !u!4 &1218380893
+  - {fileID: 1008503205836797975, guid: 8dc49380183725e47aada17e749dd6d8, type: 3}
+  - {fileID: 1008503205836797975, guid: 741a3c3d45173f34db77b22eec1057ae, type: 3}
+  - {fileID: 1008503205836797975, guid: 697afd1e29f66f84badecd76c553c785, type: 3}
+  charSpawnObject: {fileID: 2759092887304429494, guid: f2784a8015b88944cbc9603fcf13f3ce,
+    type: 3}
+  sandGrid: {fileID: 3185304696002584826, guid: d45f79e518d30404bbcb6030b8974532,
+    type: 3}
+--- !u!4 &155799522
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218380891}
+  m_GameObject: {fileID: 155799520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.469901, y: -3.3278592, z: 0.1850586}
   m_LocalScale: {x: 1, y: 1, z: 1}
