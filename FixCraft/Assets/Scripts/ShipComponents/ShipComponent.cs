@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class ShipComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        Player player;
+        if (player = collision.GetComponent<Player>())
+        {
+            player.CollectComponent(this);
+            gameObject.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlaceComponent(Vector2 position)
     {
-        
+        transform.position = position;
     }
+
 }

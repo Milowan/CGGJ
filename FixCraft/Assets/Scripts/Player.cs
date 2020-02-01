@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public float speed = 4;
     private static int gems = 0;
     public Animation anim;
+    private List<ShipComponent> components;
+
     public int GetGems()
     {
         return gems;
@@ -131,6 +133,11 @@ public class Player : MonoBehaviour
     List<PlayerState> GetPlayerStates()
     {
         return mCurrentStates;
+    }
+
+    public void CollectComponent(ShipComponent shipComponent)
+    {
+        components.Add(shipComponent);
     }
 }
 
