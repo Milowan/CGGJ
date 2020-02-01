@@ -7,8 +7,8 @@ public class BlockGenesis : MonoBehaviour
     [Range(30,100)]
     [SerializeField] private int blockFieldSize = 40;
     [SerializeField] public List<GameObject> spawnedTiles;
-    [SerializeField] GameObject[] blocks;
-    
+    [SerializeField] GameObject[] blocks, groundBlocks;
+     
     void Start()
     {
         float   _curWidth = 0, 
@@ -24,7 +24,9 @@ public class BlockGenesis : MonoBehaviour
             
             //Here we can use a pool instead of a straight up instantiate (rough on performance)
             GameObject curBlock = GameObject.Instantiate(blocks[Random.Range(0, blocks.Length)]);
+            GameObject undrBlock = GameObject.Instantiate(groundBlocks[Random.Range(0, groundBlocks.Length)]);
             curBlock.transform.position = new Vector2(_curWidth, _curHeight);
+            undrBlock.transform.position = new Vector2(_curWidth, _curHeight);
 
             _curWidth += step;
             if (i != 1 && i % blockFieldSize == blockFieldSize-1 )

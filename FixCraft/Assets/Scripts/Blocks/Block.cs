@@ -23,7 +23,7 @@ public class Block : MonoBehaviour
 
     private void Die()
     {
-        gameObject.SetActive(false;
+        gameObject.SetActive(false);
         mined = true;
     }
 
