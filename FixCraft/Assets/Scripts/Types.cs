@@ -13,3 +13,11 @@ public enum PlayerState
     MOVING,
     IDLE
 }
+
+public enum ShipComponentType
+{
+    CONE,
+    ENGINE,
+    FUEL,
+    WING
+}
