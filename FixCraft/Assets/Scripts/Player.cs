@@ -197,5 +197,15 @@ public class Player : MonoBehaviour
             drillAnimator.SetBool("bDrilling", false);
         }
     }
+
+    public void AttachComponentsToShip(Ship ship)
+    {
+        foreach(ShipComponent component in components)
+        {
+            ship.AttachComponent(component);
+        }
+
+        components.Clear();
+    }
 }
 
