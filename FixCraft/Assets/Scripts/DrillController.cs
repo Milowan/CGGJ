@@ -40,7 +40,7 @@ public class DrillController : MonoBehaviour
     {
         if (collision == gameObject.CompareTag("Clay"));
         {
-            block = collision.GetComponent<Block>();
+            block = collision.gameObject.GetComponent<Block>();
             block.TakeDamage(power);
         }
     }
