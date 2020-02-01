@@ -7,11 +7,11 @@ public class DrillController : MonoBehaviour
     private float speed;
     private float power = 10;
     private float strength = 10;
-    BoxCollider2D collider;
+    PolygonCollider2D collider;
     Block block;
     private void Awake()
     {
-        collider = GetComponent<BoxCollider2D>();
+        collider = GetComponent<PolygonCollider2D>();
     }
     public void Update()
     {
