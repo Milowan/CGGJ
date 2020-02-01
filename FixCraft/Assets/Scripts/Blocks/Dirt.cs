@@ -8,7 +8,7 @@ public class Dirt : Block
     void Start()
     {
         mineable = true;
-        gameObject.SetActive(false);
+        enabled = false;
         material = Material.DIRT;
         health = 100.0f;
     }

@@ -8,7 +8,7 @@ public class Clay : Block
     void Start()
     {
         mineable = true;
-        gameObject.SetActive(false);
+        enabled = false;
         material = Material.CLAY;
         health = 150.0f;
     }
