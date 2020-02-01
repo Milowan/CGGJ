@@ -14,6 +14,8 @@ public class BlockGenesis : MonoBehaviour
     [Space(15)]
     [SerializeField] GameObject charSpawnObject;
     [SerializeField] Grid sandGrid;
+
+    private bool spawnPlaced = false;
      
     void Start()
     {
@@ -109,10 +111,12 @@ public class BlockGenesis : MonoBehaviour
             }
 
             //Character Spawn Point
-            if (spaceCount == 200)
+            float mid = (blockFieldSize * _step) / 2;
+            if (!spawnPlaced)
             {
-                var temp = Instantiate(charSpawnObject, new Vector2(_curWidth, _curHeight), Quaternion.identity);
-                sandGrid.transform.position = new Vector2(_curWidth, _curHeight);
+                spawnPlaced = true;
+                var temp = Instantiate(charSpawnObject, new Vector2(mid, mid), Quaternion.identity);
+                sandGrid.transform.position = new Vector2(mid, mid);
             };
 
         }
