@@ -195,12 +195,12 @@ PrefabInstance:
     - target: {fileID: 3185304696002584825, guid: d45f79e518d30404bbcb6030b8974532,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3185304696002584825, guid: d45f79e518d30404bbcb6030b8974532,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 22.2
       objectReference: {fileID: 0}
     - target: {fileID: 3185304696002584825, guid: d45f79e518d30404bbcb6030b8974532,
         type: 3}
@@ -254,6 +254,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d45f79e518d30404bbcb6030b8974532, type: 3}
+--- !u!156049354 &1178309755 stripped
+Grid:
+  m_CorrespondingSourceObject: {fileID: 3185304696002584826, guid: d45f79e518d30404bbcb6030b8974532,
+    type: 3}
+  m_PrefabInstance: {fileID: 1074666247}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1219821162
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,15 +292,14 @@ MonoBehaviour:
   blockFieldSize: 100
   spawnedTiles: []
   blocks:
-  - {fileID: 1008503205836797975, guid: 697afd1e29f66f84badecd76c553c785, type: 3}
-  - {fileID: 1008503205836797975, guid: 741a3c3d45173f34db77b22eec1057ae, type: 3}
-  - {fileID: 1008503205836797975, guid: 8dc49380183725e47aada17e749dd6d8, type: 3}
+  - {fileID: 1008503205836797975, guid: b4b6713392f89c941bd0cdf20679688b, type: 3}
   - {fileID: 1008503205836797975, guid: 56e926df912020e44a288872fc03ddac, type: 3}
-  groundBlocks:
-  - {fileID: 1008503205836797975, guid: 1f3f8c213a181ae47a367cb5ac65aa7e, type: 3}
-  - {fileID: 1008503205836797975, guid: 94454aa77525993438a38602b59c7ba4, type: 3}
-  - {fileID: 1008503205836797975, guid: 3e7750f5854fcc84684c52ff29bf3d07, type: 3}
-  - {fileID: 1008503205836797975, guid: 7d3e5040304c32340bbfb696f253a6a2, type: 3}
+  - {fileID: 1008503205836797975, guid: 8dc49380183725e47aada17e749dd6d8, type: 3}
+  - {fileID: 1008503205836797975, guid: 741a3c3d45173f34db77b22eec1057ae, type: 3}
+  - {fileID: 1008503205836797975, guid: 697afd1e29f66f84badecd76c553c785, type: 3}
+  charSpawnObject: {fileID: 2759092887304429494, guid: f2784a8015b88944cbc9603fcf13f3ce,
+    type: 3}
+  sandGrid: {fileID: 1178309755}
 --- !u!4 &1219821164
 Transform:
   m_ObjectHideFlags: 0
