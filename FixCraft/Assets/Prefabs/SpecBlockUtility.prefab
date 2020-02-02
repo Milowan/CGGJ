@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3249254279101970893}
   - component: {fileID: 5850214315826285011}
   m_Layer: 0
-  m_Name: GemSpawner
+  m_Name: SpecBlockUtility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GemBaby: {fileID: 1008503205836797975, guid: b4b6713392f89c941bd0cdf20679688b, type: 3}
+  shipParts:
+  - {fileID: 5002697376152582610, guid: 4231838ffaf8ea343969b88292fc549e, type: 3}
+  - {fileID: 3959809760593123205, guid: 75aaa55e752c88847a3d3fca2250e854, type: 3}
+  - {fileID: 353633079695184682, guid: 42d93b2fb2df3c2449da5eab3fed81f8, type: 3}
+  - {fileID: 3363922418865589036, guid: 60108e6db6d9724479827aaeed57f7f9, type: 3}
