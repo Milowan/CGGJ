@@ -10,7 +10,8 @@ public class Clay : Block
         mineable = true;
         enabled = false;
         material = Material.CLAY;
-        maxHealth = 150.0f;
+        maxHealth = 200.0f;
+        health = maxHealth;
         GameEventManager.GameStart += GameStart;
     }
 }

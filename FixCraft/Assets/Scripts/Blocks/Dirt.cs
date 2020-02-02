@@ -11,6 +11,7 @@ public class Dirt : Block
         enabled = false;
         material = Material.DIRT;
         maxHealth = 100.0f;
+        health = maxHealth;
         GameEventManager.GameStart += GameStart;
     }
 }
