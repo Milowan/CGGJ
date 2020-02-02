@@ -93,7 +93,7 @@ public class BlockGenesis : MonoBehaviour
                         _curHeight > wid * 0.55f && _curHeight < wid * 0.7f ||
                         _curHeight > wid * 0.35f && _curHeight < wid * 0.45f)
                 {
-                    if (Random.Range(1f, 10f) > 7) {
+                    if (Random.Range(1f, 10f) > 6) {
                         GameObject temp = new GameObject("temp");
                         temp.tag = "garbage";
                         return temp;
@@ -155,11 +155,11 @@ public class BlockGenesis : MonoBehaviour
                 if (!charSpawnObject)
                 {
                     charSpawnObject = new GameObject("SpawnPoint");
-                    charSpawnObject.transform.position = new Vector2(mid, mid - 2);
+                    charSpawnObject.transform.position = new Vector2(mid, mid);
                 }
                 else
                 {
-                    var temp = Instantiate(charSpawnObject, new Vector2(mid, mid - 2), Quaternion.identity);
+                    var temp = Instantiate(charSpawnObject, new Vector2(mid, mid), Quaternion.identity);
                 }
                 sandGrid.transform.position = new Vector2(mid, mid);
             };
