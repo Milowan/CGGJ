@@ -4,19 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
-    Player player;
+    public Player player;
     public Text gemAmount;
     int gems;
+    List<ShipComponent> uiList = new List<ShipComponent>();
 
     public List<ShipComponent> shipsSprites = new List<ShipComponent>();
 
     private void Awake()
     {
-        player = FindObjectOfType<Player>();
+        //uiList = Player.GetShipComponents();
         gems = player.GetGems();
-        gemAmount.text = "" + gems;
     }
     private void Update()
     {
+        gemAmount.text = " = " + gems;
+        player = FindObjectOfType<Player>();
+
+    }
+    private void LateUpdate()
+    {
+
     }
 }

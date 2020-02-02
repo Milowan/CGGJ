@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private static int gems = 0;
     public Animation anim;
     private Vector2 forward;
-    private List<ShipComponent> components = new List<ShipComponent>();
+    public static List<ShipComponent> components = new List<ShipComponent>();
     [SerializeField]
     private List<PlayerState> mCurrentStates = new List<PlayerState>();
 
@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
     }
-    
+
     void HandleDrilling()
     {
         bool found = false;
@@ -276,12 +276,13 @@ public class Player : MonoBehaviour
 
     public void AttachComponentsToShip(Ship ship)
     {
-        foreach(ShipComponent component in components)
+        foreach (ShipComponent component in components)
         {
             ship.AttachComponent(component);
         }
 
         components.Clear();
     }
+
 }
 
