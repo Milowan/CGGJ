@@ -7,6 +7,7 @@ public class DrillController : MonoBehaviour
     private float speed;
     private float power = 10;
     private float strength = 10;
+    private Vector3 forward;
     BoxCollider2D collider;
     Block block;
     private void Awake()
@@ -16,9 +17,9 @@ public class DrillController : MonoBehaviour
     public void Update()
     {
         {
-            Vector3 mousePos = Input.mousePosition;
+            Vector2 mousePos = Input.mousePosition;
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(mousePos);
-
+            forward = -(transform.position - mousePosition);
             //transform.LookAt(new Vector3(mousePosition.x, mousePosition.y, transform.position.x));
             Quaternion rot = Quaternion.LookRotation(transform.position - mousePosition, Vector3.forward);
             transform.rotation = rot;
@@ -45,5 +46,10 @@ public class DrillController : MonoBehaviour
             block = collision.gameObject.GetComponent<Block>();
             block.TakeDamage(strength);
         }
+    }
+
+    public Vector3 GetForward()
+    {
+        return forward;
     }
 }
