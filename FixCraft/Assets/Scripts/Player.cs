@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Animations;
 public class Player : MonoBehaviour
 {
+    static Player mInstance;
+
     private Rigidbody2D rb;
     private DrillController drill;
     private Animator playerAnimator;
@@ -12,7 +14,7 @@ public class Player : MonoBehaviour
     private static int gems = 0;
     private Vector2 forward;
     [SerializeField]
-    public List<ShipComponent> components = new List<ShipComponent>();
+    public List<ShipComponent> mComponents = new List<ShipComponent>();
     [SerializeField]
     private List<PlayerState> mCurrentStates = new List<PlayerState>();
 
@@ -22,20 +24,19 @@ public class Player : MonoBehaviour
     Vector2 moveDirection = new Vector2(0, 0);
     float angle = 0;
 
-    public int GetGems()
+    private void Awake()
     {
-        return gems;
+        if (mInstance == null)
+        {
+            mInstance = this;
+        }
     }
-
-    public void SetGems(int value)
-    {
-        gems = value;
-    }
-
 
     // Start is called before the first frame update
     void Start()
     {
+
+
         rb = GetComponent<Rigidbody2D>();
         drill = GetComponentInChildren<DrillController>();
         playerAnimator = transform.GetChild(0).GetComponent<Animator>();
@@ -50,6 +51,33 @@ public class Player : MonoBehaviour
         CheckInputs();
         UpdateAnimations();
         HandleDrilling();
+    }
+    private void FixedUpdate()
+    {
+        ///////////////////////////////////////IF SOMEONE HAS TIME TRY AND FIX THIS, ITS SUPPOSED TO STOP YOU FROM FACING AWAY FROM WALLS///////////////////////////////
+        //if (moveDirection.x <= 0.1f)
+        //{
+        //    if (Input.GetKey(KeyCode.W))
+        //    {
+        //        Quaternion newRotation2 = Quaternion.AngleAxis(0, Vector3.forward);
+        //        playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
+        //    }
+        //    if (Input.GetKey(KeyCode.D))
+        //    {
+        //        Quaternion newRotation2 = Quaternion.AngleAxis(90, Vector3.forward);
+        //        playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
+        //    }
+        //    if (Input.GetKey(KeyCode.S))
+        //    {
+        //        Quaternion newRotation2 = Quaternion.AngleAxis(180, Vector3.forward);
+        //        playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
+        //    }
+        //    if (Input.GetKey(KeyCode.A))
+        //    {
+        //        Quaternion newRotation2 = Quaternion.AngleAxis(270, Vector3.forward);
+        //        playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
+        //    }
+        //}
     }
 
     void CheckInputs()
@@ -183,43 +211,36 @@ public class Player : MonoBehaviour
         }
     }
 
+    public static Player GetInstance()
+    {
+        return mInstance;
+    }
+
     List<PlayerState> GetPlayerStates()
     {
         return mCurrentStates;
     }
 
-    public void CollectComponent(ShipComponent shipComponent)
+    public int GetGems()
     {
-        components.Add(shipComponent);
+        return gems;
     }
 
-    private void FixedUpdate()
+    public void SetGems(int value)
     {
-        ///////////////////////////////////////IF SOMEONE HAS TIME TRY AND FIX THIS, ITS SUPPOSED TO STOP YOU FROM FACING AWAY FROM WALLS///////////////////////////////
-        //if (moveDirection.x <= 0.1f)
-        //{
-        //    if (Input.GetKey(KeyCode.W))
-        //    {
-        //        Quaternion newRotation2 = Quaternion.AngleAxis(0, Vector3.forward);
-        //        playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
-        //    }
-        //    if (Input.GetKey(KeyCode.D))
-        //    {
-        //        Quaternion newRotation2 = Quaternion.AngleAxis(90, Vector3.forward);
-        //        playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
-        //    }
-        //    if (Input.GetKey(KeyCode.S))
-        //    {
-        //        Quaternion newRotation2 = Quaternion.AngleAxis(180, Vector3.forward);
-        //        playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
-        //    }
-        //    if (Input.GetKey(KeyCode.A))
-        //    {
-        //        Quaternion newRotation2 = Quaternion.AngleAxis(270, Vector3.forward);
-        //        playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
-        //    }
-        //}
+        gems = value;
     }
+
+    public List<ShipComponent> GetShipComponents()
+    {
+        return mComponents;
+    }
+
+    public void CollectComponent(ShipComponent shipComponent)
+    {
+        mComponents.Add(shipComponent);
+    }
+
 
     void UpdateAnimations()
     {
@@ -276,12 +297,12 @@ public class Player : MonoBehaviour
 
     public void AttachComponentsToShip(Ship ship)
     {
-        foreach (ShipComponent component in components)
+        foreach (ShipComponent component in mComponents)
         {
             ship.AttachComponent(component);
         }
 
-        components.Clear();
+        mComponents.Clear();
     }
 
 }
