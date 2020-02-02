@@ -3,7 +3,13 @@ guid: 7d39ad94e5026eb4fa7fef07c4708425
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {instanceID: 0}
+  - gemAmount: {instanceID: 0}
+  - coneSprite: {fileID: 21300000, guid: 3ebaebf2521449d46adbc322360b6b63, type: 3}
+  - engineSprite: {fileID: 21300000, guid: 6f6d0f3861c5be54f807e6f02f565dd8, type: 3}
+  - fuelSprite: {fileID: 21300000, guid: b491ed3ef6dceb34b86138b33fe38fc3, type: 3}
+  - wingSprite: {fileID: 21300000, guid: 2f4b2511e1594714fa7673b4b5ff7e14, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
