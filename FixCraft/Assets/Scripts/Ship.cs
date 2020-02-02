@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ship : MonoBehaviour
 {
@@ -45,6 +46,11 @@ public class Ship : MonoBehaviour
         {
             wing = (Wing)component;
             component.PlaceComponent(wingPosition);
+        }
+
+        if (cone != null && engine != null && fuel != null && wing != null)
+        {
+            SceneManager.LoadScene("WinScene");
         }
     }
 }
