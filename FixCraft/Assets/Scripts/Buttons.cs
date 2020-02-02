@@ -7,8 +7,7 @@ public class Buttons : MonoBehaviour
 {
     public void LoadCutScene()
     {
-        SceneManager.LoadScene(2);     
-        GameEventManager.TriggerGameStart();
+        SceneManager.LoadScene(2);
     }
     public void Quit()
     {

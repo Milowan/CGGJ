@@ -640,7 +640,6 @@ MonoBehaviour:
   rawImage: {fileID: 1742897888}
   videoPlayer: {fileID: 831709226}
   audioSource: {fileID: 831709225}
-  continueText: {fileID: 1448676561}
 --- !u!1 &892147340
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,7 +795,7 @@ GameObject:
   - component: {fileID: 1448676564}
   - component: {fileID: 1448676563}
   m_Layer: 5
-  m_Name: ContinueText
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
