@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 221281310}
   - component: {fileID: 221281312}
   - component: {fileID: 221281313}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Synthesizer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8329,7 +8329,7 @@ GameObject:
   - component: {fileID: 311763189}
   - component: {fileID: 311763191}
   - component: {fileID: 311763192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9182,7 +9182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1884917801}
   - component: {fileID: 1884917802}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: MiniMapIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9263,7 +9263,7 @@ GameObject:
   - component: {fileID: 2040382535}
   - component: {fileID: 2040382538}
   - component: {fileID: 2040382537}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DropOffBin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
