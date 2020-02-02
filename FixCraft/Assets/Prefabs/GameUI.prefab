@@ -490,6 +490,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7328359884816637626, guid: 6cfc60398f2c84748ae17455e711535e, type: 3}
   gemAmount: {fileID: 8952659875363851433}
+  coneSprite: {fileID: 21300000, guid: 3ebaebf2521449d46adbc322360b6b63, type: 3}
+  engineSprite: {fileID: 21300000, guid: 6f6d0f3861c5be54f807e6f02f565dd8, type: 3}
+  fuelSprite: {fileID: 21300000, guid: b491ed3ef6dceb34b86138b33fe38fc3, type: 3}
+  wingSprite: {fileID: 21300000, guid: 2f4b2511e1594714fa7673b4b5ff7e14, type: 3}
   shipsSprites: []
 --- !u!1 &6761026302025803147
 GameObject:
@@ -915,7 +919,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.79375005, y: 0.62489825}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0025024414, y: 1.3499756}
+  m_AnchoredPosition: {x: 0.0025024414, y: 1.349968}
   m_SizeDelta: {x: -18.375, y: -18.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &321183880262935908

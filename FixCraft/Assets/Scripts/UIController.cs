@@ -6,6 +6,10 @@ public class UIController : MonoBehaviour
 {
     public Player player;
     public Text gemAmount;
+    public Sprite coneSprite;
+    public Sprite engineSprite;
+    public Sprite fuelSprite;
+    public Sprite wingSprite;
     int gems;
     GameObject[] uiShipSlots = new GameObject[4];
     List<ShipComponent> currentParts = new List<ShipComponent>();
@@ -15,7 +19,7 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         player = Player.GetInstance();
-        for (int i = 0; i < uiShipSlots.Length - 1; i++)
+        for (int i = 0; i < uiShipSlots.Length; i++)
         { 
             uiShipSlots[i] = gameObject.transform.GetChild(0).GetChild(i).gameObject;
         }
@@ -23,9 +27,9 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        //gems = player.GetGems();
+        gems = player.GetGems();
         gemAmount.text = " = " + gems;
-        //currentParts = player.GetShipComponents();
+        currentParts = player.GetShipComponents();
 
     }
 
@@ -38,9 +42,21 @@ public class UIController : MonoBehaviour
     {
         for (int i = 0; i < currentParts.Count; i++)
         {
-            if (uiShipSlots[i].gameObject.GetComponent<ShipComponent>().GetShipComponentType() == ShipComponentType.CONE)
+            if (currentParts[i].gameObject.GetComponent<ShipComponent>().GetShipComponentType() == ShipComponentType.CONE)
             {
-
+                uiShipSlots[0].GetComponent<Image>().sprite = coneSprite;
+            }
+            if (currentParts[i].gameObject.GetComponent<ShipComponent>().GetShipComponentType() == ShipComponentType.ENGINE)
+            {
+                uiShipSlots[1].GetComponent<Image>().sprite = engineSprite;
+            }
+            if (currentParts[i].gameObject.GetComponent<ShipComponent>().GetShipComponentType() == ShipComponentType.FUEL)
+            {
+                uiShipSlots[2].GetComponent<Image>().sprite = fuelSprite;
+            }
+            if (currentParts[i].gameObject.GetComponent<ShipComponent>().GetShipComponentType() == ShipComponentType.WING)
+            {
+                uiShipSlots[3].GetComponent<Image>().sprite = wingSprite;
             }
         }
     }
