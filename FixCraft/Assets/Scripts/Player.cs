@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     private Animator drillAnimator;
     public float speed = 4;
     private static int gems = 0;
-    public Animation anim;
     private List<ShipComponent> components = new List<ShipComponent>();
     [SerializeField]
     private List<PlayerState> mCurrentStates = new List<PlayerState>();
@@ -37,7 +36,6 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         drill = GetComponentInChildren<DrillController>();
-        anim = GetComponentInChildren<Animation>();
         playerAnimator = transform.GetChild(0).GetComponent<Animator>();
         drillAnimator = drill.GetComponent<Animator>();
         playerSprite = transform.GetChild(0).gameObject;
@@ -46,30 +44,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        rb.velocity = new Vector2(horizontal * speed, vertical * speed);        
-
+        HandleMovement();
         CheckInputs();
         UpdateAnimations();
-
-        bool found = false;
-        for (int i = 0; i < mCurrentStates.Count; i++)
-        {
-            if (mCurrentStates[i] == PlayerState.DRILLING)
-            {
-                found = true;
-            }
-        }
-        if (found == true)
-        {
-            drill.Mine(); 
-            found = false;
-        }
-        else if (found == false)
-        {
-            drill.StopMine();
-        }
+        HandleDrilling();
     }
 
     void CheckInputs()
@@ -135,6 +113,18 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (Input.GetKey(KeyCode.E))
+        {
+            RaycastHit2D hit;
+            if (hit = Physics2D.Raycast(transform.position, transform.forward, 1.0f))
+            {
+                if (hit.collider.GetComponent<Ship>())
+                {
+                    AttachComponentsToShip(hit.collider.GetComponent<Ship>());
+                }
+            }
+        }
+
         if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D) && !Input.GetMouseButton(0))
         {
             bool found = false;
@@ -157,17 +147,33 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
 
-        if (Input.GetKeyDown("Interact"))
+    void HandleMovement()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+    }
+
+    void HandleDrilling()
+    {
+        bool found = false;
+        for (int i = 0; i < mCurrentStates.Count; i++)
         {
-            RaycastHit2D hit;
-            if (hit = Physics2D.Raycast(transform.position, transform.forward, 1.0f))
+            if (mCurrentStates[i] == PlayerState.DRILLING)
             {
-                if (hit.collider.GetComponent<Ship>())
-                {
-                    AttachComponentsToShip(hit.collider.GetComponent<Ship>());
-                }
+                found = true;
             }
+        }
+        if (found == true)
+        {
+            drill.Mine();
+            found = false;
+        }
+        else if (found == false)
+        {
+            drill.StopMine();
         }
     }
 
@@ -179,6 +185,34 @@ public class Player : MonoBehaviour
     public void CollectComponent(ShipComponent shipComponent)
     {
         components.Add(shipComponent);
+    }
+
+    private void FixedUpdate()
+    {
+        ///////////////////////////////////////IF SOMEONE HAS TIME TRY AND FIX THIS, ITS SUPPOSED TO STOP YOU FROM FACING AWAY FROM WALLS///////////////////////////////
+        //if (moveDirection.x <= 0.1f)
+        //{
+        //    if (Input.GetKey(KeyCode.W))
+        //    {
+        //        Quaternion newRotation2 = Quaternion.AngleAxis(0, Vector3.forward);
+        //        playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
+        //    }
+        //    if (Input.GetKey(KeyCode.D))
+        //    {
+        //        Quaternion newRotation2 = Quaternion.AngleAxis(90, Vector3.forward);
+        //        playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
+        //    }
+        //    if (Input.GetKey(KeyCode.S))
+        //    {
+        //        Quaternion newRotation2 = Quaternion.AngleAxis(180, Vector3.forward);
+        //        playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
+        //    }
+        //    if (Input.GetKey(KeyCode.A))
+        //    {
+        //        Quaternion newRotation2 = Quaternion.AngleAxis(270, Vector3.forward);
+        //        playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
+        //    }
+        //}
     }
 
     void UpdateAnimations()
@@ -196,13 +230,20 @@ public class Player : MonoBehaviour
             //Set animator bool to true and make the sprite face the forward vector
             playerAnimator.SetBool("bMoving", true);
             moveDirection = new Vector2(transform.position.x, transform.position.y) - previousPos;
+            float x = moveDirection.x;
+            Quaternion newRotation1 = Quaternion.AngleAxis(0, Vector3.forward);
             if (moveDirection != Vector2.zero)
             {
-                angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+                playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation1, 1.0f);
+                if (moveDirection != Vector2.zero)
+                {
+                    angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
 
-                Quaternion newRotation = Quaternion.AngleAxis((angle - 90), Vector3.forward);
-                playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, 1.0f);
+                    Quaternion newRotation2 = Quaternion.AngleAxis((angle - 90), Vector3.forward);
+                    playerSprite.transform.rotation = Quaternion.Lerp(transform.rotation, newRotation2, 1.0f);
+                }
             }
+            //else 
             previousPos = transform.position;
         }
         else if (found1 == false)
