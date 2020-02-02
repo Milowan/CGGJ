@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bf4407c7183ef45bdea23db26e168b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockFieldSize: 100
+  blockFieldSize: 150
   spawnedTiles: []
   blocks:
   - {fileID: 1008503205836797975, guid: d98da5f15fc7a704fa35abfc221b8ae6, type: 3}

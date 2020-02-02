@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-
 public class BlockGenesis : MonoBehaviour
 {
-    [Range(100,1000)]
+    [Range(100, 1000)]
     [SerializeField] private int blockFieldSize = 40;
     [SerializeField] public List<GameObject> spawnedTiles;
     [SerializeField] GameObject[] blocks;
@@ -16,35 +13,36 @@ public class BlockGenesis : MonoBehaviour
     [SerializeField] Grid sandGrid;
 
     private bool spawnPlaced = false;
-     
+
     void Start()
     {
-        float   _curWidth = 0, 
+        float _curWidth = 0,
                 _curHeight = 0;
 
-        float   _step = (blocks[0].GetComponent<SpriteRenderer>()) ? blocks[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x : 0.32f, 
+        float _step = (blocks[0].GetComponent<SpriteRenderer>()) ? blocks[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x : 0.32f,
                 step = _step;
-        
+
         int spaceCount = 0;
-        int startBlock = ((blockFieldSize * blockFieldSize) / 3)  ;
+        int startBlock = ((blockFieldSize * blockFieldSize) / 3);
         int endBlock = (blockFieldSize * blockFieldSize) - startBlock;
         bool spaceTrigger = false;
         float trigReset = 0;
 
         for (int i = 0; i < blockFieldSize * blockFieldSize; i++)
         {
-
-            System.Func<GameObject> lambdaObject = () => {
+            //Having fun
+            System.Func<GameObject> lambdaObject = () =>
+            {
                 float wid = (blockFieldSize * _step);
                 //bedrock outline
                 if (_curWidth < wid * 0.03f || _curHeight < wid * 0.03f || _curWidth > wid * 0.97f || _curHeight > wid * 0.97f)
                 {
-                        return blocks[0];
+                    return blocks[0];
                 }
                 //steel
                 else if (_curWidth < wid * 0.1f || _curHeight < wid * 0.1f || _curWidth > wid * 0.9f || _curHeight > wid * 0.9f)
                 {
-                    if (_curWidth > wid * 0.09f  && _curWidth < wid * 0.99f|| _curHeight > wid * 0.09f && _curHeight < wid * 0.99f)
+                    if (_curWidth > wid * 0.09f && _curWidth < wid * 0.99f || _curHeight > wid * 0.09f && _curHeight < wid * 0.99f)
                     {
                         return blocks[Random.Range(1, 3)];
                     }
@@ -59,7 +57,7 @@ public class BlockGenesis : MonoBehaviour
                         return blocks[Random.Range(2, 4)];
                     }
                     else
-                    return blocks[2];
+                        return blocks[2];
                 }
                 //clay
                 else if (_curWidth < wid * 0.28f || _curHeight < wid * 0.28f || _curWidth > wid * 0.72f || _curHeight > wid * 0.72f)
@@ -72,14 +70,36 @@ public class BlockGenesis : MonoBehaviour
                         return blocks[3];
                 }
                 //dirt
-                else if (_curWidth < wid * 0.36f || _curHeight < wid * 0.36f || _curWidth > wid * 0.64f || _curHeight > wid * 0.64f)
+                else if (_curWidth < wid * 0.4f || _curHeight < wid * 0.4f || _curWidth > wid * 0.60f || _curHeight > wid * 0.60f)
                 {
-                    if (_curWidth > wid * 0.32f && _curWidth < wid * 0.68f || _curHeight > wid * 0.32f && _curHeight < wid * 0.68f)
                     {
-                        return blocks[Random.Range(3, 5)];
+                        if (_curWidth > wid * 0.32f || _curWidth < wid * 0.68f || _curHeight > wid * 0.32f || _curHeight < wid * 0.68f)
+                        {
+                            if (Random.Range(1f, 10f) >= 9.8f) {
+                                GameObject temp = new GameObject("temp");
+                                temp.tag = "garbage";
+                                return temp;
+                            }
+                            else
+                            return blocks[Random.Range(3, 5)];
+                        }
+                        else
+                            return blocks[4];
+                    }
+                }
+
+                //dirt spread in center
+                else if (_curWidth > wid * 0.41f && _curWidth < wid * 0.45f || _curWidth > wid * 0.56f && _curWidth < wid * 0.61f ||
+                        _curHeight > wid * 0.55f && _curHeight < wid * 0.7f ||
+                        _curHeight > wid * 0.35f && _curHeight < wid * 0.45f)
+                {
+                    if (Random.Range(1f, 10f) > 7) {
+                        GameObject temp = new GameObject("temp");
+                        temp.tag = "garbage";
+                        return temp;
                     }
                     else
-                        return blocks[4];
+                        return blocks[Random.Range(3, 5)];
                 }
                 return null;
             };
@@ -92,21 +112,19 @@ public class BlockGenesis : MonoBehaviour
                 curBlock.transform.position = new Vector2(_curWidth, _curHeight);
             }
 
-            _curWidth += step;
-
-            if (i != 1 && i % blockFieldSize == blockFieldSize-1 )
+            if (i != 1 && i % blockFieldSize == blockFieldSize - 1)
             {
                 _curWidth = 0;
-                _curHeight+= step;
+                _curHeight += step;
             }
 
-            spawnedTiles.Add(curBlock);
-
+            if (curBlock)
+                spawnedTiles.Add(curBlock);
+            
             if (spaceCount != 0 && spaceCount % 20 == 0)
             {
                 spaceTrigger = true;
                 trigReset = _curHeight;
-                spaceCount++;
             }
 
             if (spaceTrigger)
@@ -117,16 +135,15 @@ public class BlockGenesis : MonoBehaviour
                     trigReset = 0;
                 }
             }
-            //Spawn-Space 
-            if (i >= startBlock && 
-                i < endBlock && 
-                _curWidth >= ( blockFieldSize * _step ) * 0.4f  && 
-                _curWidth < (blockFieldSize * _step) * 0.6f && 
-                spaceCount <= (20 * 20) && 
+
+            //Check Clear Space 
+            if (i >= startBlock &&
+                i < endBlock &&
+                _curWidth >= (blockFieldSize * _step) * 0.4f &&
+                _curWidth <= (blockFieldSize * _step) * 0.6f &&
+                spaceCount <= (20 * 20) &&
                 !spaceTrigger)
             {
-                //Testing only
-                Destroy(curBlock);
                 spaceCount++;
             }
 
@@ -147,6 +164,12 @@ public class BlockGenesis : MonoBehaviour
                 sandGrid.transform.position = new Vector2(mid, mid);
             };
 
+            _curWidth += step;
+        }
+
+        foreach (var item in GameObject.FindGameObjectsWithTag("garbage"))
+        {
+            Destroy(item);
         }
     }
 }
