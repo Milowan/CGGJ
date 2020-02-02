@@ -16,21 +16,30 @@ public class UIController : MonoBehaviour
     List<ShipComponent> currentParts = new List<ShipComponent>();
     GameObject uiTextObject;
 
+    bool isSet = false;
+
     private void Start()
     {
-        player = Player.GetInstance();
         for (int i = 0; i < uiShipSlots.Length; i++)
         { 
-            uiShipSlots[i] = gameObject.transform.GetChild(0).GetChild(i).gameObject;
+            uiShipSlots[i] = gameObject.transform.GetChild(1).GetChild(i).gameObject;
         }
-        uiTextObject = gameObject.transform.GetChild(0).GetChild(6).GetChild(0).gameObject;
+        uiTextObject = gameObject.transform.GetChild(1).GetChild(4).GetChild(0).gameObject;
     }
 
     private void Update()
     {
-        gems = player.GetGems();
-        gemAmount.text = " = " + gems;
-        currentParts = player.GetShipComponents();
+        if (Player.GetInstance() != null)
+        {
+            player = Player.GetInstance();
+            isSet = true;
+        }
+        if (isSet)
+        {
+            gems = player.GetGems();
+            gemAmount.text = " = " + gems;
+            currentParts = player.GetShipComponents();
+        }
 
     }
 
