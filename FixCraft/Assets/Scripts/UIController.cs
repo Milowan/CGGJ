@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour
         player = Player.GetInstance();
         for (int i = 0; i < uiShipSlots.Length; i++)
         { 
-            uiShipSlots[i] = gameObject.transform.GetChild(2).GetChild(i).gameObject;
+            uiShipSlots[i] = gameObject.transform.GetChild(3).GetChild(i).gameObject;
         }
     }
 
