@@ -34,5 +34,6 @@ public class Gem : MonoBehaviour
     {
         gameObject.SetActive(true);
         enabled = false;
+        //transform.position = Vector2(Random.Range())
     }
 }
