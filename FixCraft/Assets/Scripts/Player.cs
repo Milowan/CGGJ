@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
     void Start()
     {
 
-
         rb = GetComponent<Rigidbody2D>();
         drill = GetComponentInChildren<DrillController>();
         playerAnimator = transform.GetChild(0).GetComponent<Animator>();
@@ -130,6 +129,22 @@ public class Player : MonoBehaviour
             if (found == false)
             {
                 mCurrentStates.Add(PlayerState.MOVING);
+            }
+            if(Input.GetKey(KeyCode.W))
+            {
+
+            }
+            else if(Input.GetKey(KeyCode.A))
+            {
+
+            }
+            else if(Input.GetKey(KeyCode.S))
+            {
+
+            }
+            else if(Input.GetKey(KeyCode.D))
+            {
+
             }
         }
         else
