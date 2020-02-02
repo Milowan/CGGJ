@@ -11,16 +11,32 @@ public class BlockGenesis : MonoBehaviour
     [Space(15)]
     [SerializeField] GameObject charSpawnObject, gemBaby;
     [SerializeField] Grid sandGrid;
+    List<GameObject> shipParts;
+    bool t1 = false, 
+        t2 = false, 
+        t3 = false, 
+        t4 = false;
 
     private bool spawnPlaced = false;
 
+    //MapSize Func & Member
+    Vector2 mapSize = Vector2.zero;
+    public Vector2 MapSize { get => mapSize; }
+
     void Start()
     {
+        shipParts = new List<GameObject>();
+        foreach (var item in KugUtil.Instance.shipParts)
+        {
+            shipParts.Add(item);
+        } 
+
         float _curWidth = 0,
                 _curHeight = 0;
 
         float _step = (blocks[0].GetComponent<SpriteRenderer>()) ? blocks[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x : 0.32f,
                 step = _step;
+        mapSize = new Vector2(blockFieldSize * _step, blockFieldSize * _step);
 
         int spaceCount = 0;
         int startBlock = ((blockFieldSize * blockFieldSize) / 3);
@@ -119,24 +135,48 @@ public class BlockGenesis : MonoBehaviour
                 {
                     GameObject gemBabe = Instantiate(gemBaby, curBlock.transform);
                     curBlock.GetComponent<Block>().GemBlock = true;
+                    if (!t4 && Random.Range(1, 1000) == 998)
+                    {
+                        t4 = true;
+                        GameObject sPart = shipParts[3];
+                        Instantiate(shipParts[3], curBlock.transform.position, Quaternion.identity);
+                    }
                 }
                 //Stone block
                 else if(curBlock.GetComponent<Stone>() && Random.Range(0f, 100f) > 85f)
                 {
                     GameObject gemBabe = Instantiate(gemBaby, curBlock.transform);
                     curBlock.GetComponent<Block>().GemBlock = true;
+                    if (!t3 && Random.Range(1, 1000) == 998)
+                    {
+                        t3 = true;
+                        GameObject sPart = shipParts[2];
+                        Instantiate(shipParts[2], curBlock.transform.position, Quaternion.identity);
+                    }
                 }
                 //Clay block
                 else if (curBlock.GetComponent<Clay>() && Random.Range(0f, 100f) > 90f)
                 {
                     GameObject gemBabe = Instantiate(gemBaby, curBlock.transform);
                     curBlock.GetComponent<Block>().GemBlock = true;
+                   if (!t2 && Random.Range(1, 1000) == 998)
+                    {
+                        t2 = true;
+                        GameObject sPart = shipParts[1];
+                        Instantiate(shipParts[1], curBlock.transform.position, Quaternion.identity);
+                    }
                 }
                 //Dirt block
                 else if (curBlock.GetComponent<Dirt>() && Random.Range(0f, 100f) > 95f)
                 {
                     GameObject gemBabe = Instantiate(gemBaby, curBlock.transform);
                     curBlock.GetComponent<Block>().GemBlock = true;
+                    if (!t1 && Random.Range(1, 1000) == 998)
+                    {
+                        t1 = true;
+                        GameObject sPart = shipParts[0];
+                        Instantiate(shipParts[0], curBlock.transform.position, Quaternion.identity);
+                    }
                 }
             }
 
@@ -198,6 +238,32 @@ public class BlockGenesis : MonoBehaviour
         foreach (var item in GameObject.FindGameObjectsWithTag("garbage"))
         {
             Destroy(item);
+        }
+        
+        //Ensure ship part spawn
+        if (!t1 || !t2 || !t3 || !t4)
+        {
+            float wid = (blockFieldSize * _step);
+            if (!t1)
+            {
+                GameObject sPart = shipParts[0];
+                Instantiate(sPart, new Vector2(Random.Range(wid * 0.1f, wid * 0.9f), Random.Range(wid * 0.2f, wid * 0.8f)), Quaternion.identity);
+            }
+            if (!t2)
+            {
+                GameObject sPart = shipParts[1];
+                Instantiate(sPart, new Vector2(Random.Range(wid * 0.1f, wid * 0.9f), Random.Range(wid * 0.2f, wid * 0.8f)), Quaternion.identity);
+            }
+            if (!t3)
+            {
+                GameObject sPart = shipParts[2];
+                Instantiate(sPart, new Vector2(Random.Range(wid * 0.1f, wid * 0.9f), Random.Range(wid * 0.2f, wid * 0.8f)), Quaternion.identity);
+            }
+            if (!t4)
+            {
+                GameObject sPart = shipParts[3];
+                Instantiate(sPart, new Vector2(Random.Range(wid * 0.1f, wid * 0.9f), Random.Range(wid * 0.2f, wid * 0.8f)), Quaternion.identity);
+            }
         }
     }
 }
