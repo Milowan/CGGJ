@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     public float speed = 4;
     private static int gems = 0;
     public Animation anim;
-    private Vector2 forward;
     private List<ShipComponent> components = new List<ShipComponent>();
     [SerializeField]
     private List<PlayerState> mCurrentStates = new List<PlayerState>();
@@ -115,10 +114,12 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.E))
+        Debug.DrawRay(transform.position, drill.GetForward());
+        if (Input.GetButton("Interact"))
         {
             RaycastHit2D hit;
-            if (hit = Physics2D.Raycast(transform.position, transform.forward, 1.0f))
+            LayerMask mask = LayerMask.GetMask("Ship");
+            if (hit = Physics2D.Raycast(drill.transform.position, drill.GetForward(), 1.0f, mask))
             {
                 if (hit.collider.GetComponent<Ship>())
                 {
