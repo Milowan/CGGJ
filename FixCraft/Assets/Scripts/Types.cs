@@ -21,3 +21,11 @@ public enum ShipComponentType
     FUEL,
     WING
 }
+
+public enum DrillType
+{
+    STONE,
+    IRON,
+    STEEL,
+    DIAMOND
+}

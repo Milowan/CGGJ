@@ -211,6 +211,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void UpgradeDrill(DrillType type, int cost)
+    {
+        if (gems >= cost)
+        {
+            gems -= cost;
+            drill.SetType(type);
+        }
+    }
+
     public static Player GetInstance()
     {
         return mInstance;
