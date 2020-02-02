@@ -10,9 +10,9 @@ public class Player : MonoBehaviour
     private Animator drillAnimator;
     public float speed = 4;
     private static int gems = 0;
-    public Animation anim;
     private Vector2 forward;
-    public static List<ShipComponent> components = new List<ShipComponent>();
+    [SerializeField]
+    public List<ShipComponent> components = new List<ShipComponent>();
     [SerializeField]
     private List<PlayerState> mCurrentStates = new List<PlayerState>();
 
