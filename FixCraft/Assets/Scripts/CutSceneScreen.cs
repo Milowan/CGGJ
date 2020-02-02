@@ -14,7 +14,7 @@ public class CutSceneScreen : MonoBehaviour
     public GameObject continueText;
 
     private int time;
-    private int maxTime = 1350;
+    private int maxTime = 300;
     Scene scene;
     // Start is called before the first frame update
     void Start()
