@@ -4,17 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
-public class StartScreen : MonoBehaviour
+public class IntroVideoScreen : MonoBehaviour
 {
     public RawImage rawImage;
     public VideoPlayer videoPlayer;
     public AudioSource audioSource;
+
+    public GameObject continueText;
+
+    private int time;
+    private int maxTime = 2000;
+    Scene scene;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(PlayVideo());
+        StartCoroutine(PlayStartScreen());
     }
-    IEnumerator PlayVideo()
+    private void Update()
+    {
+        LoadNextScene();
+        time++;
+        if(time >= maxTime)
+        {
+            continueText.SetActive(true);
+        }
+    }
+    IEnumerator PlayStartScreen()
     {
         videoPlayer.Prepare();
         WaitForSeconds waitForSeconds = new WaitForSeconds(1);
@@ -26,7 +41,10 @@ public class StartScreen : MonoBehaviour
         rawImage.texture = videoPlayer.texture;
         videoPlayer.Play();
         audioSource.Play();
-        while (!videoPlayer.isPlaying)
+    }
+    void LoadNextScene()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(1);
         }

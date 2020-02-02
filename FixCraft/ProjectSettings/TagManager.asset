@@ -19,7 +19,7 @@ TagManager:
   - 
   - 
   - Ship
-  - 
+  - MiniMapIcons
   - 
   - 
   - 
@@ -48,4 +48,7 @@ TagManager:
     locked: 0
   - name: ShipLayer
     uniqueID: 3109924273
+    locked: 0
+  - name: GemLayer
+    uniqueID: 1290293297
     locked: 0

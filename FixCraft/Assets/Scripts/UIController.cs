@@ -12,16 +12,15 @@ public class UIController : MonoBehaviour
     public Sprite wingSprite;
     int gems;
     GameObject[] uiShipSlots = new GameObject[4];
+    [SerializeField]
     List<ShipComponent> currentParts = new List<ShipComponent>();
-
-    public List<ShipComponent> shipsSprites = new List<ShipComponent>();
 
     private void Start()
     {
         player = Player.GetInstance();
         for (int i = 0; i < uiShipSlots.Length; i++)
         { 
-            uiShipSlots[i] = gameObject.transform.GetChild(0).GetChild(i).gameObject;
+            uiShipSlots[i] = gameObject.transform.GetChild(2).GetChild(i).gameObject;
         }
     }
 
@@ -44,19 +43,23 @@ public class UIController : MonoBehaviour
         {
             if (currentParts[i].gameObject.GetComponent<ShipComponent>().GetShipComponentType() == ShipComponentType.CONE)
             {
-                uiShipSlots[0].GetComponent<Image>().sprite = coneSprite;
+                uiShipSlots[i].GetComponent<Image>().sprite = coneSprite;
+                uiShipSlots[i].GetComponent<Image>().color = new Color(255, 255, 255, 255);
             }
             if (currentParts[i].gameObject.GetComponent<ShipComponent>().GetShipComponentType() == ShipComponentType.ENGINE)
             {
-                uiShipSlots[1].GetComponent<Image>().sprite = engineSprite;
+                uiShipSlots[i].GetComponent<Image>().sprite = engineSprite;
+                uiShipSlots[i].GetComponent<Image>().color = new Color(255, 255, 255, 255);
             }
             if (currentParts[i].gameObject.GetComponent<ShipComponent>().GetShipComponentType() == ShipComponentType.FUEL)
             {
-                uiShipSlots[2].GetComponent<Image>().sprite = fuelSprite;
+                uiShipSlots[i].GetComponent<Image>().sprite = fuelSprite;
+                uiShipSlots[i].GetComponent<Image>().color = new Color(255, 255, 255, 255);
             }
             if (currentParts[i].gameObject.GetComponent<ShipComponent>().GetShipComponentType() == ShipComponentType.WING)
             {
-                uiShipSlots[3].GetComponent<Image>().sprite = wingSprite;
+                uiShipSlots[i].GetComponent<Image>().sprite = wingSprite;
+                uiShipSlots[i].GetComponent<Image>().color = new Color(255, 255, 255, 255);
             }
         }
     }
