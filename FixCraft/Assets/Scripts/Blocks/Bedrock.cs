@@ -11,6 +11,7 @@ public class Bedrock : Block
         enabled = false;
         material = Material.BEDROCK;
         maxHealth = 1.0f;
+        health = maxHealth;
         GameEventManager.GameStart += GameStart;
     }
 }
