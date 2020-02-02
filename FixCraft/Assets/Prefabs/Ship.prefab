@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1053480782758174671}
   - component: {fileID: 2826530162926397291}
   - component: {fileID: 6880290668631908847}
-  - component: {fileID: 61490912853028444}
+  - component: {fileID: 1670406217980853528}
   m_Layer: 8
   m_Name: Ship
   m_TagString: Untagged
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416814f787a65c8448af008d3113a0ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &61490912853028444
-BoxCollider2D:
+--- !u!60 &1670406217980853528
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,16 +106,34 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 1.28}
+    oldSize: {x: 0.82, y: 1.22}
     newSize: {x: 0.96, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.81, y: 1.28}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.28, y: 0.11}
+      - {x: 0.13, y: 0.32999998}
+      - {x: 0.24, y: 0.32999998}
+      - {x: 0.28, y: 0.34}
+      - {x: 0.19, y: 0.52}
+      - {x: 0.089999996, y: 0.61}
+      - {x: -0.11, y: 0.61}
+      - {x: -0.16, y: 0.56}
+      - {x: -0.28, y: 0.42999998}
+      - {x: -0.19999999, y: 0.29}
+      - {x: -0.41, y: 0.03}
+      - {x: -0.41, y: -0.39999998}
+      - {x: -0.34, y: -0.42999998}
+      - {x: -0.26999998, y: -0.58}
+      - {x: -0.14, y: -0.61}
+      - {x: 0.099999994, y: -0.61}
+      - {x: 0.38, y: -0.42}
+      - {x: 0.41, y: -0.35}
+      - {x: 0.41, y: -0.04}
