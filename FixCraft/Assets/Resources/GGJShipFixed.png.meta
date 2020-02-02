@@ -8,6 +8,10 @@ TextureImporter:
     21300006: GGJShipFixed_3
     21300008: GGJShipFixed_4
     21300010: GGJShipFixed_5
+    21300012: GGJShipFixed_6
+    21300014: GGJShipFixed_7
+    21300016: GGJShipFixed_8
+    21300018: GGJShipFixed_9
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -104,10 +108,10 @@ TextureImporter:
       name: GGJShipFixed_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 252
-        width: 96
-        height: 128
+        x: 2
+        y: 258
+        width: 82
+        height: 122
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,7 +119,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15b0cd7109ba91a4397e41e7959337c7
+      spriteID: 9bee2779fd30e2448bcd35d7b492a80e
       vertices: []
       indices: 
       edges: []
@@ -124,10 +128,10 @@ TextureImporter:
       name: GGJShipFixed_1
       rect:
         serializedVersion: 2
-        x: 96
-        y: 252
-        width: 96
-        height: 128
+        x: 99
+        y: 258
+        width: 82
+        height: 122
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,7 +139,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c73ef9ee73f69846939c1251d222e1a
+      spriteID: bd7e9e3d16865ea4ab51dc71b08d1c3a
       vertices: []
       indices: 
       edges: []
@@ -144,10 +148,10 @@ TextureImporter:
       name: GGJShipFixed_2
       rect:
         serializedVersion: 2
-        x: 192
-        y: 252
-        width: 96
-        height: 128
+        x: 194
+        y: 258
+        width: 82
+        height: 122
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,7 +159,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d984065af8442374ba4ebe5ab94adbc7
+      spriteID: 6603deaa73dafb9408a28accb41894fc
       vertices: []
       indices: 
       edges: []
@@ -165,9 +169,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 124
-        width: 96
-        height: 128
+        y: 127
+        width: 95
+        height: 121
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,7 +179,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 476ab59441bb9f643b5d8b07553e7656
+      spriteID: 8a95a7fee2ee13e42b578e589b1b7ac9
       vertices: []
       indices: 
       edges: []
@@ -185,9 +189,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 124
-        width: 96
-        height: 128
+        y: 127
+        width: 95
+        height: 121
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,7 +199,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4642d0814fc225c44937db5f3bfa7e0c
+      spriteID: 744af53944d4785448eba9330095ecb3
       vertices: []
       indices: 
       edges: []
@@ -205,9 +209,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 124
-        width: 96
-        height: 128
+        y: 123
+        width: 95
+        height: 124
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,7 +219,87 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26d9b41bbfa6f6246a0bb3ccd11307a9
+      spriteID: ada7834f1eb6a2d43bd014c459752ea1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GGJShipFixed_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 123
+        width: 95
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea0f98b6c863af946b8270f0329313c8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GGJShipFixed_7
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 15
+        width: 265
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c64e1af1142ad940a175621a57fb847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GGJShipFixed_8
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 17
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ece3f4087d5820342aa886f4e4401002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GGJShipFixed_9
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 15
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f876349795458340a441dbfff47f249
       vertices: []
       indices: 
       edges: []
