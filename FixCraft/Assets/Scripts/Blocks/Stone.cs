@@ -10,7 +10,7 @@ public class Stone : Block
         mineable = true;
         enabled = false;
         material = Material.STONE;
-        maxHealth = 300.0f;
+        maxHealth = 750.0f;
         health = maxHealth;
         GameEventManager.GameStart += GameStart;
     }
