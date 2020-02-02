@@ -10,6 +10,7 @@ public class Block : MonoBehaviour
     protected float health;
     protected float maxHealth;
     protected Material material;
+    public bool GemBlock { get; set; } = false;
 
     public void TakeDamage(float damage)
     {
@@ -23,6 +24,9 @@ public class Block : MonoBehaviour
 
     private void Die()
     {
+        if (GemBlock) {
+            Instantiate(KugUtil.Instance.GemBaby, transform.position, Quaternion.identity);
+        }
         gameObject.SetActive(false);
         mined = true;
     }

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7401428433499707279}
   - component: {fileID: 6620066628495099626}
   - component: {fileID: 60904944682388530}
+  - component: {fileID: 2518053837334600474}
+  - component: {fileID: 158743777868760901}
   m_Layer: 0
   m_Name: gem
   m_TagString: Untagged
@@ -90,7 +92,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -113,3 +115,34 @@ PolygonCollider2D:
       - {x: 0.16, y: -0.02}
       - {x: 0.16, y: 0.07}
       - {x: 0.099999994, y: 0.13}
+--- !u!95 &2518053837334600474
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008503205836797975}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dbf76202c1bb58b46bd4cbf27cee7cf9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &158743777868760901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008503205836797975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4f2996b1ad015419a042db8f133555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

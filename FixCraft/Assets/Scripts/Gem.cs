@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         GameEventManager.GameStart += GameStart;
@@ -12,9 +11,9 @@ public class Gem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player player;
-        if (player = collision.GetComponent<Player>())
+        if (collision.GetComponent<Player>())
         {
+            Player player = collision.GetComponent<Player>();
             player.SetGems(player.GetGems() + 1);
             gameObject.SetActive(false);
         }

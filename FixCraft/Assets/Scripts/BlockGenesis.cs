@@ -9,7 +9,7 @@ public class BlockGenesis : MonoBehaviour
     [SerializeField] public List<GameObject> spawnedTiles;
     [SerializeField] GameObject[] blocks;
     [Space(15)]
-    [SerializeField] GameObject charSpawnObject;
+    [SerializeField] GameObject charSpawnObject, gemBaby;
     [SerializeField] Grid sandGrid;
 
     private bool spawnPlaced = false;
@@ -54,6 +54,10 @@ public class BlockGenesis : MonoBehaviour
                 {
                     if (_curWidth > wid * 0.1f && _curWidth < wid * 0.9f || _curHeight > wid * 0.9f && _curHeight < wid * 0.17f)
                     {
+                        if (Random.Range(0f,100f) > 75)
+                        {
+                            return blocks[Random.Range(2, 4)];
+                        }
                         return blocks[Random.Range(2, 4)];
                     }
                     else
@@ -110,6 +114,30 @@ public class BlockGenesis : MonoBehaviour
             {
                 curBlock = Instantiate(lambdaObject());
                 curBlock.transform.position = new Vector2(_curWidth, _curHeight);
+                //Steel block
+                if (curBlock.GetComponent<Steel>() && Random.Range(0f,100f) > 75f)
+                {
+                    GameObject gemBabe = Instantiate(gemBaby, curBlock.transform);
+                    curBlock.GetComponent<Block>().GemBlock = true;
+                }
+                //Stone block
+                else if(curBlock.GetComponent<Stone>() && Random.Range(0f, 100f) > 85f)
+                {
+                    GameObject gemBabe = Instantiate(gemBaby, curBlock.transform);
+                    curBlock.GetComponent<Block>().GemBlock = true;
+                }
+                //Clay block
+                else if (curBlock.GetComponent<Clay>() && Random.Range(0f, 100f) > 90f)
+                {
+                    GameObject gemBabe = Instantiate(gemBaby, curBlock.transform);
+                    curBlock.GetComponent<Block>().GemBlock = true;
+                }
+                //Dirt block
+                else if (curBlock.GetComponent<Dirt>() && Random.Range(0f, 100f) > 95f)
+                {
+                    GameObject gemBabe = Instantiate(gemBaby, curBlock.transform);
+                    curBlock.GetComponent<Block>().GemBlock = true;
+                }
             }
 
             if (i != 1 && i % blockFieldSize == blockFieldSize - 1)
