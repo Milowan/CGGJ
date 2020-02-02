@@ -7,8 +7,8 @@ public class Block : MonoBehaviour
 
     protected bool mineable;
     private bool mined;
-    [SerializeField]
     protected float health;
+    protected float maxHealth;
     protected Material material;
 
     public void TakeDamage(float damage)
@@ -42,6 +42,7 @@ public class Block : MonoBehaviour
     {
         gameObject.SetActive(true);
         mined = false;
+        health = maxHealth;
     }
 
 }

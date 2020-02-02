@@ -10,7 +10,7 @@ public class Bedrock : Block
         mineable = false;
         enabled = false;
         material = Material.BEDROCK;
-        health = 1.0f;
+        maxHealth = 1.0f;
         GameEventManager.GameStart += GameStart;
     }
 }

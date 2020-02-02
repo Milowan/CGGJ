@@ -10,7 +10,7 @@ public class Dirt : Block
         mineable = true;
         enabled = false;
         material = Material.DIRT;
-        health = 100.0f;
+        maxHealth = 100.0f;
         GameEventManager.GameStart += GameStart;
     }
 }

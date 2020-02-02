@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7401428433499707279}
   - component: {fileID: 6620066628495099626}
-  - component: {fileID: 5978985479469856498}
   - component: {fileID: 60362840988028580}
+  - component: {fileID: 114413676802391178}
   m_Layer: 0
   m_Name: bedrock
   m_TagString: Stone
@@ -81,19 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5978985479469856498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008503205836797975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d4f1609fa88de84bab9c72a38f75f63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
 --- !u!60 &60362840988028580
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +110,16 @@ PolygonCollider2D:
       - {x: -0.16, y: -0.16}
       - {x: 0.16, y: -0.16}
       - {x: 0.16, y: 0.16}
+--- !u!114 &114413676802391178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008503205836797975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba54258be0953e408d0fbf99141c077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0

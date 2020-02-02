@@ -10,7 +10,7 @@ public class Steel : Block
         mineable = true;
         enabled = false;
         material = Material.STEEL;
-        health = 250.0f;
+        maxHealth = 250.0f;
         GameEventManager.GameStart += GameStart;
     }
 }
