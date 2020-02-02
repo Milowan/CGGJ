@@ -135,7 +135,7 @@ public class BlockGenesis : MonoBehaviour
                 {
                     GameObject gemBabe = Instantiate(gemBaby, curBlock.transform);
                     curBlock.GetComponent<Block>().GemBlock = true;
-                    if (!t4 && Random.Range(1f,1000f) > 998f)
+                    if (!t4 && Random.Range(1, 1000) == 998)
                     {
                         t4 = true;
                         GameObject sPart = shipParts[3];
@@ -147,7 +147,7 @@ public class BlockGenesis : MonoBehaviour
                 {
                     GameObject gemBabe = Instantiate(gemBaby, curBlock.transform);
                     curBlock.GetComponent<Block>().GemBlock = true;
-                    if (!t3 && Random.Range(1f, 1000f) > 998f)
+                    if (!t3 && Random.Range(1, 1000) == 998)
                     {
                         t3 = true;
                         GameObject sPart = shipParts[2];
@@ -159,7 +159,7 @@ public class BlockGenesis : MonoBehaviour
                 {
                     GameObject gemBabe = Instantiate(gemBaby, curBlock.transform);
                     curBlock.GetComponent<Block>().GemBlock = true;
-                   if (!t2 && Random.Range(1f, 1000f) > 998f)
+                   if (!t2 && Random.Range(1, 1000) == 998)
                     {
                         t2 = true;
                         GameObject sPart = shipParts[1];
@@ -171,7 +171,7 @@ public class BlockGenesis : MonoBehaviour
                 {
                     GameObject gemBabe = Instantiate(gemBaby, curBlock.transform);
                     curBlock.GetComponent<Block>().GemBlock = true;
-                    if (!t1 && Random.Range(1f, 1000f) > 998f)
+                    if (!t1 && Random.Range(1, 1000) == 998)
                     {
                         t1 = true;
                         GameObject sPart = shipParts[0];
