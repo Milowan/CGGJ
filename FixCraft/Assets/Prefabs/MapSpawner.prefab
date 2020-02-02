@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4936848799876106866}
   - component: {fileID: 4936848799876106869}
   m_Layer: 0
-  m_Name: MapSpanwer
+  m_Name: MapSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,4 +54,5 @@ MonoBehaviour:
   charSpawnObject: {fileID: 2759092887304429494, guid: f2784a8015b88944cbc9603fcf13f3ce,
     type: 3}
   gemBaby: {fileID: 7568896772161644200, guid: 318e550a10171a841b91d281bbdced6d, type: 3}
-  sandGrid: {fileID: 0}
+  sandGrid: {fileID: 3185304696002584826, guid: d45f79e518d30404bbcb6030b8974532,
+    type: 3}
