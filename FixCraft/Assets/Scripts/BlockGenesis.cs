@@ -39,27 +39,47 @@ public class BlockGenesis : MonoBehaviour
                 //bedrock outline
                 if (_curWidth < wid * 0.03f || _curHeight < wid * 0.03f || _curWidth > wid * 0.97f || _curHeight > wid * 0.97f)
                 {
-                    return blocks[0];
+                        return blocks[0];
                 }
                 //steel
                 else if (_curWidth < wid * 0.1f || _curHeight < wid * 0.1f || _curWidth > wid * 0.9f || _curHeight > wid * 0.9f)
                 {
-                    return blocks[1];
+                    if (_curWidth > wid * 0.06f  && _curWidth < wid * 0.94f|| _curHeight > wid * 0.06f && _curHeight < wid * 0.94f)
+                    {
+                        return blocks[Random.Range(1, 3)];
+                    }
+                    else
+                        return blocks[1];
                 }
                 //stone
                 else if (_curWidth < wid * 0.2f || _curHeight < wid * 0.2f || _curWidth > wid * 0.8f || _curHeight > wid * 0.8f)
                 {
+                    if (_curWidth > wid * 0.17f && _curWidth < wid * 0.85f || _curHeight > wid * 0.85f && _curHeight < wid * 0.17f)
+                    {
+                        return blocks[Random.Range(2, 4)];
+                    }
+                    else
                     return blocks[2];
                 }
                 //clay
                 else if (_curWidth < wid * 0.28f || _curHeight < wid * 0.28f || _curWidth > wid * 0.72f || _curHeight > wid * 0.72f)
                 {
-                    return blocks[3];
+                    if (_curWidth > wid * 0.24f && _curWidth < wid * 0.8f || _curHeight > wid * 0.24f && _curHeight < wid * 0.8f)
+                    {
+                        return blocks[Random.Range(3, 5)];
+                    }
+                    else
+                        return blocks[3];
                 }
                 //dirt
                 else if (_curWidth < wid * 0.36f || _curHeight < wid * 0.36f || _curWidth > wid * 0.64f || _curHeight > wid * 0.64f)
                 {
-                    return blocks[4];
+                    if (_curWidth > wid * 0.32f && _curWidth < wid * 0.68f || _curHeight > wid * 0.32f && _curHeight < wid * 0.68f)
+                    {
+                        return blocks[Random.Range(3, 5)];
+                    }
+                    else
+                        return blocks[4];
                 }
                 return null;
             };
