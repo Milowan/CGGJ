@@ -155,11 +155,11 @@ public class BlockGenesis : MonoBehaviour
                 if (!charSpawnObject)
                 {
                     charSpawnObject = new GameObject("SpawnPoint");
-                    charSpawnObject.transform.position = new Vector2(mid, mid);
+                    charSpawnObject.transform.position = new Vector2(mid, mid - 2);
                 }
                 else
                 {
-                    var temp = Instantiate(charSpawnObject, new Vector2(mid, mid), Quaternion.identity);
+                    var temp = Instantiate(charSpawnObject, new Vector2(mid, mid - 2), Quaternion.identity);
                 }
                 sandGrid.transform.position = new Vector2(mid, mid);
             };
