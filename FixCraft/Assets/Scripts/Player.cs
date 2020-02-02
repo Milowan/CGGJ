@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public float speed = 4;
     private static int gems = 0;
     public Animation anim;
+    private Vector2 forward;
     private List<ShipComponent> components = new List<ShipComponent>();
     [SerializeField]
     private List<PlayerState> mCurrentStates = new List<PlayerState>();
@@ -158,10 +159,10 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown("Interact"))
+        if (Input.GetButtonDown("Interact"))
         {
             RaycastHit2D hit;
-            if (hit = Physics2D.Raycast(transform.position, transform.forward, 1.0f))
+            if (hit = Physics2D.Raycast(transform.position, transform.up, 1.0f))
             {
                 if (hit.collider.GetComponent<Ship>())
                 {
