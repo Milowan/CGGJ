@@ -11,12 +11,15 @@ public class Player : MonoBehaviour
     private Animator playerAnimator;
     private Animator drillAnimator;
     public float speed = 4;
-    private static int gems = 0;
+    private static int gems = 20;
     private Vector2 forward;
     [SerializeField]
     public List<ShipComponent> mComponents = new List<ShipComponent>();
     [SerializeField]
     private List<PlayerState> mCurrentStates = new List<PlayerState>();
+    private List<DrillType> allDrillTypes = new List<DrillType>();
+    DrillType currentDrillType = 0;
+    int drillCost = 30;
 
     // looking where youre moving components
     private GameObject playerSprite;
@@ -35,7 +38,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         rb = GetComponent<Rigidbody2D>();
         drill = GetComponentInChildren<DrillController>();
         playerAnimator = transform.GetChild(0).GetComponent<Animator>();
@@ -166,6 +168,39 @@ public class Player : MonoBehaviour
                 if (hit.collider.GetComponent<Ship>())
                 {
                     AttachComponentsToShip(hit.collider.GetComponent<Ship>());
+                }
+                if (hit.collider.CompareTag("Interactable"))
+                {
+                    switch (currentDrillType)
+                    {
+                        case DrillType.STONE:
+                            playerAnimator.SetLayerWeight(0, 1);
+                            playerAnimator.SetLayerWeight(0, 0);
+                            playerAnimator.SetLayerWeight(0, 0);
+                            playerAnimator.SetLayerWeight(0, 0);
+                            break;
+                        case DrillType.IRON:
+                            UpgradeDrill(DrillType.IRON, drillCost);
+                            playerAnimator.SetLayerWeight(0, 0);
+                            playerAnimator.SetLayerWeight(0, 1);
+                            playerAnimator.SetLayerWeight(0, 0);
+                            playerAnimator.SetLayerWeight(0, 0);
+                            break;
+                        case DrillType.STEEL:
+                            UpgradeDrill(DrillType.STEEL, drillCost * 2);
+                            playerAnimator.SetLayerWeight(0, 0);
+                            playerAnimator.SetLayerWeight(0, 0);
+                            playerAnimator.SetLayerWeight(0, 1);
+                            playerAnimator.SetLayerWeight(0, 0);
+                            break;
+                        case DrillType.DIAMOND:
+                            UpgradeDrill(DrillType.DIAMOND, drillCost * 3);
+                            playerAnimator.SetLayerWeight(0, 0);
+                            playerAnimator.SetLayerWeight(0, 0);
+                            playerAnimator.SetLayerWeight(0, 0);
+                            playerAnimator.SetLayerWeight(0, 1);
+                            break;
+                    }
                 }
             }
         }

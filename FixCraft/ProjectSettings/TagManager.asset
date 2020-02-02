@@ -9,6 +9,7 @@ TagManager:
   - Steel
   - Stone
   - garbage
+  - Interactable
   layers:
   - Default
   - TransparentFX
