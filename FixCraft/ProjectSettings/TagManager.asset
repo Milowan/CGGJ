@@ -8,6 +8,8 @@ TagManager:
   - Dirt
   - Steel
   - Stone
+  - startButton
+  - quitButton
   layers:
   - Default
   - TransparentFX
