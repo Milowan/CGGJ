@@ -7,12 +7,19 @@ public class DrillController : MonoBehaviour
     private float speed;
     private float power = 10;
     private float strength = 10;
+    private float strengthModifier;
     private Vector3 forward;
     BoxCollider2D collider;
     Block block;
+
+    private DrillType type;
+
     private void Awake()
     {
         collider = GetComponent<BoxCollider2D>();
+        GameEventManager.GameStart += GameStart;
+        type = DrillType.STONE;
+        
     }
     public void Update()
     {
@@ -43,9 +50,34 @@ public class DrillController : MonoBehaviour
         //if ((collision == gameObject.CompareTag("Dirt")) || (collision == gameObject.CompareTag("Clay")) || (collision == gameObject.CompareTag("Stone")) || (collision == gameObject.CompareTag("Steel")))
         if (collision.GetComponent<Block>())
         {
+
+            if (type == DrillType.STONE)
+                strengthModifier = 1.0f;
+            if (type == DrillType.IRON)
+                strengthModifier = 1.5f;
+            if (type == DrillType.STEEL)
+                strengthModifier = 2.0f;
+            if (type == DrillType.DIAMOND)
+                strengthModifier = 2.5f;
+
             block = collision.gameObject.GetComponent<Block>();
-            block.TakeDamage(strength);
+            block.TakeDamage(strength * strengthModifier);
         }
+    }
+
+    private void GameStart()
+    {
+        type = DrillType.STONE;
+    }
+
+    public void SetType(DrillType nType)
+    {
+        type = nType;
+    }
+
+    public DrillType GetType()
+    {
+        return type;
     }
 
     public Vector3 GetForward()
