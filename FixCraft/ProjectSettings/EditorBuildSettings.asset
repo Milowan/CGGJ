@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/PreGameCutscene.unity
     guid: 4db1935b88648d9479656e1463ed2c8d
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: f8fb7098efddc8c4d8f03fbdb655f56d
+    path: Assets/Scenes/hafjahe.unity
+    guid: d16544cb2ca498f44862c80498be8831
   - enabled: 1
     path: Assets/Scenes/FailScene.unity
     guid: bdcbb939c2fe02c408d0a97015f6dc78
