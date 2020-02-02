@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class BlockGenesis : MonoBehaviour
 {
-    [Range(30,100)]
+    [Range(100,1000)]
     [SerializeField] private int blockFieldSize = 40;
     [SerializeField] public List<GameObject> spawnedTiles;
     [SerializeField] GameObject[] blocks;
@@ -44,7 +44,7 @@ public class BlockGenesis : MonoBehaviour
                 //steel
                 else if (_curWidth < wid * 0.1f || _curHeight < wid * 0.1f || _curWidth > wid * 0.9f || _curHeight > wid * 0.9f)
                 {
-                    if (_curWidth > wid * 0.06f  && _curWidth < wid * 0.94f|| _curHeight > wid * 0.06f && _curHeight < wid * 0.94f)
+                    if (_curWidth > wid * 0.09f  && _curWidth < wid * 0.99f|| _curHeight > wid * 0.09f && _curHeight < wid * 0.99f)
                     {
                         return blocks[Random.Range(1, 3)];
                     }
@@ -54,7 +54,7 @@ public class BlockGenesis : MonoBehaviour
                 //stone
                 else if (_curWidth < wid * 0.2f || _curHeight < wid * 0.2f || _curWidth > wid * 0.8f || _curHeight > wid * 0.8f)
                 {
-                    if (_curWidth > wid * 0.17f && _curWidth < wid * 0.85f || _curHeight > wid * 0.85f && _curHeight < wid * 0.17f)
+                    if (_curWidth > wid * 0.1f && _curWidth < wid * 0.9f || _curHeight > wid * 0.9f && _curHeight < wid * 0.17f)
                     {
                         return blocks[Random.Range(2, 4)];
                     }
